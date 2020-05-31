@@ -1,6 +1,6 @@
 package qna.domain;
 
-import org.hibernate.annotations.Where;
+import qna.CannotDeleteException;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -18,10 +18,8 @@ public class Question extends AbstractEntity {
     @JoinColumn(foreignKey = @ForeignKey(name = "fk_question_writer"))
     private User writer;
 
-    @OneToMany(mappedBy = "question", cascade = CascadeType.ALL)
-    @Where(clause = "deleted = false")
-    @OrderBy("id ASC")
-    private List<Answer> answers = new ArrayList<>();
+    @Embedded
+    private Answers answers = new Answers();
 
     private boolean deleted = false;
 
@@ -71,6 +69,36 @@ public class Question extends AbstractEntity {
         answers.add(answer);
     }
 
+    public List<DeleteHistory> delete(final User loginUser) throws CannotDeleteException {
+        validate(loginUser);
+
+        setDeleted(true);
+        List<DeleteHistory> deleteHistories = makeDeleteHistory(loginUser);
+
+        deleteAnswers(loginUser, deleteHistories);
+
+        return deleteHistories;
+    }
+
+    private void validate(User loginUser) throws CannotDeleteException {
+        if (!isOwner(loginUser)) {
+            throw new CannotDeleteException("질문을 삭제할 권한이 없습니다.");
+        }
+    }
+
+    private List<DeleteHistory> makeDeleteHistory(final User loginUser) {
+        List<DeleteHistory> deleteHistories = new ArrayList<>();
+
+        deleteHistories.add(DeleteHistory.deleteHistoryOfQuestion(this, loginUser));
+
+        return deleteHistories;
+    }
+
+    private void deleteAnswers(final User loginUser,
+                               final List<DeleteHistory> deleteHistories) throws CannotDeleteException {
+        answers.delete(loginUser, deleteHistories);
+    }
+
     public boolean isOwner(User loginUser) {
         return writer.equals(loginUser);
     }
@@ -84,7 +112,7 @@ public class Question extends AbstractEntity {
         return deleted;
     }
 
-    public List<Answer> getAnswers() {
+    public Answers getAnswers() {
         return answers;
     }
 
