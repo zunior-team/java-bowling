@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatCode;
 
+@SuppressWarnings("MethodRefCanBeReplacedWithLambda")
 @DisplayName("스트라이크 테스트")
 class StrikeTest {
     private Strike STRIKE;
@@ -28,5 +29,10 @@ class StrikeTest {
         assertThat(STRIKE.isEnd()).isTrue();
     }
 
+    @Test
+    @DisplayName("싱글톤으로 객체 가져오기")
+    void instance() {
+        assertThatCode(Strike::instance).doesNotThrowAnyException();
+    }
 
 }
