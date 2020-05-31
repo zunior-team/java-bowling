@@ -29,4 +29,10 @@ class StrikeTest {
         assertThatCode(Strike::instance).doesNotThrowAnyException();
     }
 
+    @Test
+    @DisplayName("항상 같은 객체를 리턴한다")
+    void equals() {
+        assertThat(Strike.instance()).isEqualTo(Strike.instance());
+    }
+
 }
