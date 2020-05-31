@@ -4,6 +4,8 @@ import bowling.pin.Pin;
 
 public class Ready extends State {
 
+    private Ready() {}
+
     public static Ready instance() {
         return LazyHolder.READY;
     }

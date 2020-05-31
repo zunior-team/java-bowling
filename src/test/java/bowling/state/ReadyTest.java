@@ -14,7 +14,7 @@ class ReadyTest {
 
     @BeforeEach
     void setting() {
-        READY = new Ready();
+        READY = Ready.instance();
     }
 
     @Test
