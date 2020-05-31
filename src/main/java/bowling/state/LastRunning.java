@@ -32,7 +32,7 @@ public class LastRunning extends State {
 
     private State decideTotalState() {
         if (isEnd()) {
-            return new LastEnd();
+            return LastEnd.init(states);
         }
 
         giveExtraChange();
