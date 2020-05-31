@@ -2,20 +2,36 @@ package bowling.frame;
 
 import bowling.pin.Pin;
 import bowling.state.Ready;
+import bowling.state.State;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
+import org.junit.jupiter.params.provider.NullSource;
 
 import java.util.stream.Stream;
 
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatCode;
+import static org.assertj.core.api.Assertions.*;
 
 @DisplayName("프레임 테스트")
 class FrameTest {
     private final Frame frame = new Frame(Ready.instance()) {};
+
+    @Test
+    @DisplayName("초기화")
+    void init() {
+        assertThatCode(() -> new Frame(Ready.instance()) {})
+                .doesNotThrowAnyException();
+    }
+
+    @ParameterizedTest
+    @NullSource
+    @DisplayName("초기화 실패 : null")
+    void init(final State state) {
+        assertThatIllegalArgumentException()
+                .isThrownBy(() -> new Frame(state) {});
+    }
 
     @Test
     @DisplayName("핀 쓰러뜨리기")
