@@ -1,5 +1,6 @@
 package bowling.state.laststate;
 
+import bowling.pin.Pin;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -20,5 +21,11 @@ class LastReadyTest {
     @DisplayName("equals 테스트")
     void equals() {
         assertThat(LastReady.instance()).isEqualTo(LastReady.instance());
+    }
+
+    @Test
+    @DisplayName("어떤 결과를 내더라도 다음 상태는 LastRunning")
+    void downPins() {
+        assertThat(LAST_READY.processDownPins(Pin.of(10))).isInstanceOf(LastRunning.class);
     }
 }
