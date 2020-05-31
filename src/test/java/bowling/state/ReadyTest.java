@@ -30,8 +30,15 @@ class ReadyTest {
     }
 
     @Test
-    @DisplayName("10개를 쓰러뜨리면 Strike를 반환")
+    @DisplayName("10개를 쓰러뜨리면 Strike 를 반환")
     void down10Pins() {
         assertThat(READY.downPins(Pin.of(10))).isInstanceOf(Strike.class);
     }
+
+    @Test
+    @DisplayName("10개 미만을 쓰러뜨린경우 Running 반환")
+    void downUnder10Pins() {
+        assertThat(READY.downPins(Pin.of(9))).isInstanceOf(Running.class);
+    }
+
 }
