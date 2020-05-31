@@ -1,11 +1,11 @@
 package bowling.state;
 
+import bowling.pin.Pin;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatCode;
+import static org.assertj.core.api.Assertions.*;
 
 @SuppressWarnings("ResultOfMethodCallIgnored")
 @DisplayName("스트라이크 테스트")
@@ -21,6 +21,13 @@ class StrikeTest {
     @DisplayName("종료 상태는 true")
     void isEnd() {
         assertThat(STRIKE.isEnd()).isTrue();
+    }
+
+    @Test
+    @DisplayName("스트라이크 상태에서 핀을 쓰러뜨리려고 시도하면 예외 발생")
+    void downPins() {
+        assertThatExceptionOfType(RuntimeException.class)
+                .isThrownBy(() -> STRIKE.downPins(Pin.of(0)));
     }
 
     @Test
