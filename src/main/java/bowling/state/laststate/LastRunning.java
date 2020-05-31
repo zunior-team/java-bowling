@@ -1,11 +1,19 @@
 package bowling.state.laststate;
 
 import bowling.pin.Pin;
+import bowling.state.Running;
 import bowling.state.State;
+
+import java.util.Stack;
 
 public class LastRunning extends State {
 
-    public LastRunning(final Pin downPins) {
+    private final Stack<State> states;
+
+    private LastRunning(final Pin downPins) {
+        this.states = new Stack<>();
+
+        states.add(Running.init(downPins));
     }
 
     public static LastRunning init(final Pin downPins) {
