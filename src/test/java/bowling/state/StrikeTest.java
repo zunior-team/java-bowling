@@ -1,11 +1,11 @@
 package bowling.state;
 
-import bowling.pin.Pin;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import static org.assertj.core.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatCode;
 
 @SuppressWarnings("ResultOfMethodCallIgnored")
 @DisplayName("스트라이크 테스트")

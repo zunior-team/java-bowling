@@ -12,7 +12,7 @@ public abstract class State {
         return processDownPins(downPins);
     } // 핀을 쓰러트린 후 상태를 반환
 
-    private void validate(Pin downPins) {
+    private void validate(final Pin downPins) {
         if (Objects.isNull(downPins)) {
             throw new IllegalArgumentException("Pin is null");
         }
