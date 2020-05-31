@@ -66,5 +66,4 @@ class PinTest {
                 Arguments.of(Pin.of(0), false)
         );
     }
-
 }

@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatCode;
 
+@SuppressWarnings("ResultOfMethodCallIgnored")
 @DisplayName("마지막 프레임 레디 상태 테스트")
 class LastReadyTest {
     private final LastReady LAST_READY = LastReady.instance();

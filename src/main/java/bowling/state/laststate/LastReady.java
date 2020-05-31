@@ -13,7 +13,7 @@ public class LastReady extends State {
 
     @Override
     public State processDownPins(final Pin downPins) {
-        return null;
+        return new LastRunning(downPins);
     }
 
     private static class LazyHolder {
