@@ -1,4 +1,10 @@
 package bowling.state;
 
-public class Miss {
+import bowling.pin.Pin;
+
+public class Miss extends EndState {
+    @Override
+    State processDownPins(Pin downPins) {
+        return null;
+    }
 }

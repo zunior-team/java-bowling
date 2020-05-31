@@ -1,4 +1,4 @@
 package bowling.state;
 
-public class Spare {
+public class Spare extends EndState {
 }

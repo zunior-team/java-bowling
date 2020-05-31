@@ -16,6 +16,12 @@ public class Running extends State {
 
     @Override
     State processDownPins(final Pin downPins) {
-        return null;
+        Pin downPinsTotal = fallenPins.add(downPins);
+
+        if (downPinsTotal.isAllDown()) {
+            return new Spare();
+        }
+
+        return new Miss();
     }
 }
