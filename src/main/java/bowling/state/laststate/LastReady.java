@@ -1,6 +1,7 @@
 package bowling.state.laststate;
 
 import bowling.pin.Pin;
+import bowling.state.Ready;
 import bowling.state.State;
 
 public class LastReady extends State {
@@ -13,7 +14,7 @@ public class LastReady extends State {
 
     @Override
     public State processDownPins(final Pin downPins) {
-        return new LastRunning(downPins);
+        return LastRunning.init(Ready.instance().downPins(downPins));
     }
 
     private static class LazyHolder {
