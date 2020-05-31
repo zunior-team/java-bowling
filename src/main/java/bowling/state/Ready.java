@@ -13,7 +13,7 @@ public class Ready extends State {
     @Override
     public State downPins(final Pin downPins) {
         if (downPins.isAllDown()) {
-            return new Strike();
+            return Strike.instance();
         }
 
         return new Running();
