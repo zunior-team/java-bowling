@@ -25,4 +25,9 @@ public class Miss extends EndState {
     public static Miss init(final Pin firstDownPins, final Pin secondDownPins) {
         return new Miss(firstDownPins, secondDownPins);
     }
+
+    @Override
+    public boolean isMiss() {
+        return true;
+    }
 }

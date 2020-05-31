@@ -12,4 +12,9 @@ public class Strike extends EndState {
 
         private LazyHolder() {}
     }
+
+    @Override
+    public boolean isCleanState() {
+        return true;
+    }
 }

@@ -12,4 +12,9 @@ public class Spare extends EndState {
     public static Spare init(final Pin downPins) {
         return new Spare(downPins);
     }
+
+    @Override
+    public boolean isCleanState() {
+        return true;
+    }
 }

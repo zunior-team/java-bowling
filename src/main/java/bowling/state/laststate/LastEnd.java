@@ -1,4 +1,6 @@
 package bowling.state.laststate;
 
-public class LastEnd {
+import bowling.state.EndState;
+
+public class LastEnd extends EndState {
 }

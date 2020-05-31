@@ -18,9 +18,17 @@ public abstract class State {
         }
     }
 
-    public abstract State processDownPins(final Pin downPins);
+    protected abstract State processDownPins(final Pin downPins);
 
-    public boolean isEnd() {
+    protected boolean isEnd() {
+        return false;
+    }
+
+    public boolean isMiss() {
+        return false;
+    }
+
+    public boolean isCleanState() {
         return false;
     }
 }
