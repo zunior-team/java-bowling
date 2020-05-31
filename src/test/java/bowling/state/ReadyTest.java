@@ -41,4 +41,9 @@ class ReadyTest {
         assertThat(READY.downPins(Pin.of(9))).isInstanceOf(Running.class);
     }
 
+    @Test
+    @DisplayName("싱글톤 적용 instance")
+    void instance() {
+        assertThatCode(() -> Ready.instance()).doesNotThrowAnyException();
+    }
 }
