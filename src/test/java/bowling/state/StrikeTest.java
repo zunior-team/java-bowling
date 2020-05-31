@@ -7,20 +7,14 @@ import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatCode;
 
-@SuppressWarnings("MethodRefCanBeReplacedWithLambda")
+@SuppressWarnings("ResultOfMethodCallIgnored")
 @DisplayName("스트라이크 테스트")
 class StrikeTest {
     private Strike STRIKE;
 
     @BeforeEach
     void setting() {
-        STRIKE = new Strike();
-    }
-
-    @Test
-    @DisplayName("초기화")
-    void init() {
-        assertThatCode(Strike::new).doesNotThrowAnyException();
+        STRIKE = Strike.instance();
     }
 
     @Test
