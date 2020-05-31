@@ -5,7 +5,7 @@ import bowling.pin.Pin;
 public class Ready extends State {
 
     public static Ready instance() {
-        return null;
+        return LazyHolder.READY;
     }
 
     @Override
@@ -15,5 +15,9 @@ public class Ready extends State {
         }
 
         return new Running();
+    }
+
+    private static class LazyHolder {
+        private static final Ready READY = new Ready();
     }
 }

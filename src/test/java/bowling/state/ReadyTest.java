@@ -46,4 +46,5 @@ class ReadyTest {
     void instance() {
         assertThatCode(() -> Ready.instance()).doesNotThrowAnyException();
     }
+
 }
