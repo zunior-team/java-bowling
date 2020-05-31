@@ -19,9 +19,9 @@ public class Running extends State {
         Pin downPinsTotal = this.downPins.add(downPins);
 
         if (downPinsTotal.isAllDown()) {
-            return Spare.init(this.downPins, downPins);
+            return Spare.init(this.downPins);
         }
 
-        return new Miss();
+        return Miss.init(this.downPins, downPins);
     }
 }
