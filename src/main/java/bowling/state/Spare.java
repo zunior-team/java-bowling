@@ -14,7 +14,7 @@ public class Spare extends EndState {
     }
 
     @Override
-    public boolean isCleanState() {
+    protected boolean isCleanState() {
         return true;
     }
 }

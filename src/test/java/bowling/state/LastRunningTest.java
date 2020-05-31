@@ -1,6 +1,7 @@
-package bowling.state.laststate;
+package bowling.state;
 
 import bowling.pin.Pin;
+import bowling.state.LastRunning;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;

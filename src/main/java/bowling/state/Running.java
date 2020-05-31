@@ -14,7 +14,7 @@ public class Running extends State {
     }
 
     @Override
-    public State processDownPins(final Pin downPins) {
+    protected State processDownPins(final Pin downPins) {
         Pin downPinsTotal = this.downPins.add(downPins);
 
         if (downPinsTotal.isAllDown()) {

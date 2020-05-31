@@ -1,8 +1,6 @@
-package bowling.state.laststate;
+package bowling.state;
 
 import bowling.pin.Pin;
-import bowling.state.Ready;
-import bowling.state.State;
 
 import java.util.Stack;
 
@@ -55,7 +53,7 @@ public class LastRunning extends State {
     }
 
     @Override
-    public boolean isEnd() { // 3회 던졌건, 마지막 상태가 Miss 이면 끝난 거시다
+    protected boolean isEnd() { // 3회 던졌건, 마지막 상태가 Miss 이면 끝난 거시다
         return tryCount == MAX_TRY_COUNT || getLastState().isMiss();
     }
 

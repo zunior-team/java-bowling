@@ -14,7 +14,7 @@ public class Strike extends EndState {
     }
 
     @Override
-    public boolean isCleanState() {
+    protected boolean isCleanState() {
         return true;
     }
 }
