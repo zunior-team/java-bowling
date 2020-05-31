@@ -24,13 +24,6 @@ class StrikeTest {
     }
 
     @Test
-    @DisplayName("스트라이크 상태에서 핀을 쓰러뜨리려고 시도하면 예외 발생")
-    void downPins() {
-        assertThatExceptionOfType(RuntimeException.class)
-                .isThrownBy(() -> STRIKE.downPins(Pin.of(0)));
-    }
-
-    @Test
     @DisplayName("싱글톤으로 객체 가져오기")
     void instance() {
         assertThatCode(Strike::instance).doesNotThrowAnyException();
