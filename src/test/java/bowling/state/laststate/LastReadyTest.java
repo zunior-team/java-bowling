@@ -3,6 +3,7 @@ package bowling.state.laststate;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatCode;
 
 @DisplayName("마지막 프레임 레디 상태 테스트")
@@ -15,4 +16,9 @@ class LastReadyTest {
         assertThatCode(LastReady::instance).doesNotThrowAnyException();
     }
 
+    @Test
+    @DisplayName("equals 테스트")
+    void equals() {
+        assertThat(LastReady.instance()).isEqualTo(LastReady.instance());
+    }
 }

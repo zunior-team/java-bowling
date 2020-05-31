@@ -11,7 +11,7 @@ import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException
 class StateTest {
     private static final State STATE = new State() {
         @Override
-        State processDownPins(Pin downPins) {
+        public State processDownPins(Pin downPins) {
             return null;
         }
     };
