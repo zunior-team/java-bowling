@@ -16,7 +16,7 @@ public class Ready extends State {
             return Strike.instance();
         }
 
-        return new Running();
+        return Running.init(downPins);
     }
 
     private static class LazyHolder {
