@@ -11,7 +11,7 @@ public class Ready extends State {
     }
 
     @Override
-    public State downPins(final Pin downPins) {
+    public State processDownPins(final Pin downPins) {
         if (downPins.isAllDown()) {
             return Strike.instance();
         }
