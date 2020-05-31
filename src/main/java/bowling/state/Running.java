@@ -4,10 +4,10 @@ import bowling.pin.Pin;
 
 public class Running extends State {
 
-    private final Pin fallenPins;
+    private final Pin downPins;
 
-    private Running(final Pin fallenPins) {
-        this.fallenPins = fallenPins;
+    private Running(final Pin downPins) {
+        this.downPins = downPins;
     }
 
     public static Running init(final Pin fallenPins) {
@@ -16,7 +16,7 @@ public class Running extends State {
 
     @Override
     State processDownPins(final Pin downPins) {
-        Pin downPinsTotal = fallenPins.add(downPins);
+        Pin downPinsTotal = this.downPins.add(downPins);
 
         if (downPinsTotal.isAllDown()) {
             return new Spare();
