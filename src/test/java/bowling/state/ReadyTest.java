@@ -44,7 +44,7 @@ class ReadyTest {
     @Test
     @DisplayName("싱글톤 적용 instance")
     void instance() {
-        assertThatCode(() -> Ready.instance()).doesNotThrowAnyException();
+        assertThatCode(Ready::instance).doesNotThrowAnyException();
     }
 
     @Test
