@@ -1,14 +1,21 @@
 package bowling.state;
 
+import bowling.pin.Pin;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatCode;
 
-@DisplayName("준비 상태 테스트")
+@DisplayName("준비 상태")
 class ReadyTest {
-    private static final Ready READY = new Ready();
+    private Ready READY;
+
+    @BeforeEach
+    void setting() {
+        READY = new Ready();
+    }
 
     @Test
     @DisplayName("초기화")
@@ -20,5 +27,11 @@ class ReadyTest {
     @DisplayName("종료 상태는 false")
     void isEnd() {
         assertThat(READY.isEnd()).isFalse();
+    }
+
+    @Test
+    @DisplayName("10개를 쓰러뜨리면 Strike를 반환")
+    void down10Pins() {
+        assertThat(READY.downPins(Pin.of(10))).isInstanceOf(Strike.class);
     }
 }
