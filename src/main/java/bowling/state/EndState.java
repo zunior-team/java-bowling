@@ -11,7 +11,7 @@ public abstract class EndState extends State {
     }
 
     @Override
-    protected boolean isEnd() {
+    public boolean isEnd() {
         return true;
     }
 }

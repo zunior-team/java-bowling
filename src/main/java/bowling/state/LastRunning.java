@@ -53,7 +53,7 @@ public class LastRunning extends State {
     }
 
     @Override
-    protected boolean isEnd() { // 3회 던졌건, 마지막 상태가 Miss 이면 끝난 거시다
+    public boolean isEnd() { // 3회 던졌건, 마지막 상태가 Miss 이면 끝난 거시다
         return tryCount == MAX_TRY_COUNT || getLastState().isMiss();
     }
 

@@ -20,7 +20,7 @@ public abstract class State {
 
     protected abstract State processDownPins(final Pin downPins);
 
-    protected boolean isEnd() {
+    public boolean isEnd() {
         return false;
     }
 
