@@ -11,6 +11,7 @@ public abstract class Frame {
     }
 
     public abstract boolean isFrameEnd();
+
     public boolean isBowlingEnd() {
         return false;
     }
