@@ -19,7 +19,6 @@ class StateTest {
     @Test
     @DisplayName("Pin 이 null 일 경우 예외 발생")
     void downPins() {
-
         assertThatIllegalArgumentException()
                 .isThrownBy(() -> STATE.downPins(null));
     }
