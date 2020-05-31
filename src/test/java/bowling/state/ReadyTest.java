@@ -9,6 +9,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatCode;
 
 @DisplayName("준비 상태")
+@SuppressWarnings("ResultOfMethodCallIgnored")
 class ReadyTest {
     private Ready READY;
 
