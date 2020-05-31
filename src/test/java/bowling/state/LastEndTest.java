@@ -18,7 +18,8 @@ class LastEndTest {
     @Test
     @DisplayName("초기화")
     void init() {
-        assertThatCode(() -> LastEnd.init(new Stack<>())).doesNotThrowAnyException();
+        assertThatCode(() -> LastEnd.init(new Stack<>()))
+                .doesNotThrowAnyException();
     }
 
     @ParameterizedTest
