@@ -6,8 +6,8 @@ import java.util.stream.IntStream;
 
 // 볼링 핀
 public class Pin {
-    private static final int MINIMUM_SIZE_OF_PIN = 0;
-    private static final int MAXIMUM_SIZE_OF_PIN = 10;
+    static final int MINIMUM_SIZE_OF_PIN = 0;
+    static final int MAXIMUM_SIZE_OF_PIN = 10;
 
     private int fallenPins;
 
