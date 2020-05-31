@@ -27,8 +27,12 @@ public class LastRunning extends State {
         tryCount++;
 
         State updatedState = getLastState().downPins(downPins);
-        updateState(updatedState);
+        updateLastState(updatedState);
 
+        return decideTotalState();
+    }
+
+    private State decideTotalState() {
         if (isEnd()) {
             return new LastEnd();
         }
@@ -40,18 +44,18 @@ public class LastRunning extends State {
     private void giveExtraChange() {
         State lastState = getLastState();
 
-        if (lastState.isCleanState()) {
+        if (lastState.isCleanState()) { //스페어, 스트라이크면 한번 더 던질 기회를 준다
             states.add(Ready.instance());
         }
     }
 
-    private void updateState(State updatedState) {
+    private void updateLastState(final State updatedState) {
         states.pop();
         states.add(updatedState);
     }
 
     @Override
-    public boolean isEnd() {
+    public boolean isEnd() { // 3회 던졌건, 마지막 상태가 Miss 이면 끝난 거시다
         return tryCount == MAX_TRY_COUNT || getLastState().isMiss();
     }
 
