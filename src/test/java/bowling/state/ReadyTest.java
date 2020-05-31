@@ -19,12 +19,6 @@ class ReadyTest {
     }
 
     @Test
-    @DisplayName("초기화")
-    void init() {
-        assertThatCode(ReadyTest::new).doesNotThrowAnyException();
-    }
-
-    @Test
     @DisplayName("종료 상태는 false")
     void isEnd() {
         assertThat(READY.isEnd()).isFalse();
