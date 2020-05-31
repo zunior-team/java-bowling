@@ -1,10 +1,14 @@
 package qna.domain;
 
+import org.hibernate.sql.Delete;
 import qna.CannotDeleteException;
 import qna.NotFoundException;
 import qna.UnAuthorizedException;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class Answer extends AbstractEntity {
@@ -74,7 +78,19 @@ public class Answer extends AbstractEntity {
         return "Answer [id=" + getId() + ", writer=" + writer + ", contents=" + contents + "]";
     }
 
-    public void delete(User loginUser) throws CannotDeleteException {
+    public void delete(final User loginUser, final List<DeleteHistory> deleteHistories) throws CannotDeleteException {
+        validate(loginUser);
+
+        setDeleted(true);
+
+        deleteHistories.add(makeDeleteHistory(loginUser));
+    }
+
+    private DeleteHistory makeDeleteHistory(final User loginUser) {
+        return DeleteHistory.deleteHistoryOfAnswer(this, loginUser);
+    }
+
+    private void validate(User loginUser) throws CannotDeleteException {
         if (!isOwner(loginUser)) {
             throw new CannotDeleteException("다른 사람이 쓴 답변이 있어 삭제할 수 없습니다.");
         }
