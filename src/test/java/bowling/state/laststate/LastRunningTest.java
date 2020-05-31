@@ -1,7 +1,5 @@
 package bowling.state.laststate;
 
-import bowling.pin.Pin;
-import bowling.state.Ready;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -13,7 +11,12 @@ class LastRunningTest {
     @Test
     @DisplayName("초기화")
     void init() {
-        assertThatCode(() -> LastRunning.init(Ready.instance().downPins(Pin.of(10))))
+        assertThatCode(LastRunning::init)
                 .doesNotThrowAnyException();
+    }
+
+    @Test
+    @DisplayName("3회 던졌거나, 마지막 프레임이 miss 인 경우 isEnd() true")
+    void isEnd() {
     }
 }
