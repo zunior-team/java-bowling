@@ -17,6 +17,10 @@ public class LastEnd extends EndState {
         if (Objects.isNull(states)) {
             throw new IllegalArgumentException("States can't be a null");
         }
+
+        if (states.isEmpty()) {
+            throw new IllegalArgumentException("State can't be empty");
+        }
     }
 
     public static LastEnd init(final Stack<State> states) {
