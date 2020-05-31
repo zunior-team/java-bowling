@@ -9,7 +9,7 @@ public class Pin {
     static final int MINIMUM_SIZE_OF_PIN = 0;
     static final int MAXIMUM_SIZE_OF_PIN = 10;
 
-    private int fallenPins;
+    private final int fallenPins;
 
     private Pin(final int fallenPins) {
         verify(fallenPins);
