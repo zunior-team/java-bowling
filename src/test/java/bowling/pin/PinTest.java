@@ -42,4 +42,11 @@ class PinTest {
         assertThat(Pin.of(2).add(Pin.of(5))).isEqualTo(Pin.of(7));
     }
 
+    @Test
+    @DisplayName("더하기 실패: 범위 초과")
+    void addFail() {
+        assertThatIllegalArgumentException()
+                .isThrownBy(() -> Pin.of(5).add(Pin.of(10)));
+    }
+
 }
