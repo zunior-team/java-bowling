@@ -3,7 +3,6 @@ package bowling.state;
 import bowling.pin.Pin;
 
 public class Running extends State {
-
     private final Pin downPins;
 
     private Running(final Pin downPins) {
@@ -15,7 +14,7 @@ public class Running extends State {
     }
 
     @Override
-    State processDownPins(final Pin downPins) {
+    public State processDownPins(final Pin downPins) {
         Pin downPinsTotal = this.downPins.add(downPins);
 
         if (downPinsTotal.isAllDown()) {

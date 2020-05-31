@@ -9,5 +9,7 @@ public class Strike extends EndState {
 
     private static class LazyHolder {
         public static final Strike STRIKE = new Strike();
+
+        private LazyHolder() {}
     }
 }

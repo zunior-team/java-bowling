@@ -21,5 +21,7 @@ public class Ready extends State {
 
     private static class LazyHolder {
         private static final Ready READY = new Ready();
+
+        private LazyHolder() {}
     }
 }

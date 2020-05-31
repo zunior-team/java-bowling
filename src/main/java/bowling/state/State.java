@@ -18,7 +18,7 @@ public abstract class State {
         }
     }
 
-    abstract State processDownPins(final Pin downPins);
+    public abstract State processDownPins(final Pin downPins);
 
     public boolean isEnd() {
         return false;

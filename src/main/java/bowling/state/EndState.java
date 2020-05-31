@@ -6,7 +6,7 @@ import bowling.pin.Pin;
 public abstract class EndState extends State {
 
     @Override
-    State processDownPins(Pin downPins) {
+    public State processDownPins(Pin downPins) {
         throw new UnReachableStateException();
     }
 
