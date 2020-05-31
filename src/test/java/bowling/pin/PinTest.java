@@ -35,4 +35,11 @@ class PinTest {
         assertThatIllegalArgumentException()
                 .isThrownBy(() -> Pin.of(fallenPins));
     }
+
+    @Test
+    @DisplayName("더하기")
+    void add() {
+        assertThat(Pin.of(2).add(Pin.of(5))).isEqualTo(Pin.of(7));
+    }
+
 }
