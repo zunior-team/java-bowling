@@ -47,4 +47,9 @@ class ReadyTest {
         assertThatCode(() -> Ready.instance()).doesNotThrowAnyException();
     }
 
+    @Test
+    @DisplayName("싱글톤이기 때문에 equals 결과가 true")
+    void equals() {
+        assertThat(Ready.instance()).isEqualTo(Ready.instance());
+    }
 }
