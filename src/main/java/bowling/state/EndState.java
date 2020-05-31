@@ -1,5 +1,8 @@
 package bowling.state;
 
-public interface EndState extends State {
-
+public abstract class EndState extends State {
+    @Override
+    public boolean isEnd() {
+        return true;
+    }
 }
