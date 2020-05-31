@@ -3,7 +3,11 @@ package bowling.pin;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
 import org.junit.jupiter.params.provider.ValueSource;
+
+import java.util.stream.Stream;
 
 import static bowling.pin.Pin.MAXIMUM_SIZE_OF_PIN;
 import static bowling.pin.Pin.MINIMUM_SIZE_OF_PIN;
@@ -47,6 +51,20 @@ class PinTest {
     void addFail() {
         assertThatIllegalArgumentException()
                 .isThrownBy(() -> Pin.of(5).add(Pin.of(10)));
+    }
+
+    @ParameterizedTest
+    @MethodSource
+    @DisplayName("모든 핀이 쓰러졌는지?")
+    void isAllDown(final Pin pin, final boolean expected) {
+        assertThat(pin.isAllDown()).isEqualTo(expected);
+    }
+
+    private static Stream<Arguments> isAllDown() {
+        return Stream.of(
+                Arguments.of(Pin.of(10), true),
+                Arguments.of(Pin.of(0), false)
+        );
     }
 
 }
