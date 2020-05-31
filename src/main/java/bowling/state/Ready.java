@@ -9,6 +9,6 @@ public class Ready extends State {
             return new Strike();
         }
 
-        return null;
+        return new Running();
     }
 }

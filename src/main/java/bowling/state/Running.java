@@ -1,4 +1,10 @@
 package bowling.state;
 
-public class Running {
+import bowling.pin.Pin;
+
+public class Running extends State {
+    @Override
+    public State downPins(Pin downPins) {
+        return null;
+    }
 }
