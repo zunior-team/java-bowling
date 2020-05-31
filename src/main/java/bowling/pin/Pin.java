@@ -33,6 +33,10 @@ public class Pin {
                 .get(fallenPins);
     }
 
+    public Pin add(final Pin anotherPin) {
+        return of(this.fallenPins + anotherPin.fallenPins);
+    }
+
     private static class LazyHolder {
         public static final List<Pin> PINS = IntStream.rangeClosed(MINIMUM_SIZE_OF_PIN, MAXIMUM_SIZE_OF_PIN)
                 .boxed()
