@@ -38,7 +38,7 @@ public class Pin {
     }
 
     public boolean isAllDown() {
-        return false;
+        return fallenPins == MAXIMUM_SIZE_OF_PIN;
     }
 
     private static class LazyHolder {
