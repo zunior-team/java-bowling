@@ -24,8 +24,8 @@ public class AnswerTest {
     }
 
     @Test
-    @DisplayName("다른 유저가 단 답변 삭제 시도시 실패")
-    public void delete_다른_사람_답변() {
+    @DisplayName("삭제 실패: 다른 유저가 단 답변")
+    public void deleteFail() {
         Answer answer = answerOf(11L, UserTest.JAVAJIGI);
 
         assertThatThrownBy(() -> answer.delete(UserTest.SANJIGI, new ArrayList<>()))
