@@ -16,7 +16,7 @@ import static org.assertj.core.api.Assertions.*;
 
 @DisplayName("프레임 테스트")
 class FrameTest {
-    private final Frame frame = new Frame(Ready.instance()) {};
+    private final Frame FRAME = new Frame(Ready.instance()) {};
 
     @Test
     @DisplayName("초기화")
@@ -36,13 +36,13 @@ class FrameTest {
     @Test
     @DisplayName("핀 쓰러뜨리기")
     void downPins() {
-        assertThatCode(() -> frame.downPins(Pin.of(10))).doesNotThrowAnyException();
+        assertThatCode(() -> FRAME.downPins(Pin.of(10))).doesNotThrowAnyException();
     }
 
     @Test
     @DisplayName("볼링 끝 기본은 false")
     void isBowlingEnd() {
-        assertThat(frame.isBowlingEnd()).isFalse();
+        assertThat(FRAME.isBowlingEnd()).isFalse();
     }
 
     @ParameterizedTest
