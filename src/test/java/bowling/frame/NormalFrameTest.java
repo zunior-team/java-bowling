@@ -41,13 +41,13 @@ class NormalFrameTest {
         assertThat(frames).hasSize(1);
     }
 
-/*
     @Test
     @DisplayName("핀 쓰러뜨리기")
     void downPins() {
-        assertThatCode(() -> FRAME.downPins(Pin.of(10))).doesNotThrowAnyException();
+        assertThatCode(() -> NormalFrame.init().downPins(Pin.of(10))).doesNotThrowAnyException();
     }
 
+/*
     @Test
     @DisplayName("볼링 끝 기본은 false")
     void isBowlingEnd() {
