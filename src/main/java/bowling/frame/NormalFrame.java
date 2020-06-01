@@ -22,7 +22,7 @@ public class NormalFrame extends Frame {
             return LastFrame.init();
         }
 
-        return new NormalFrame(Ready.instance(), frameNo + 1);
+        return new NormalFrame(Ready.instance(), nextFrameNo);
     }
 
     @Override

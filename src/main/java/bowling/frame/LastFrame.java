@@ -22,6 +22,6 @@ public class LastFrame extends Frame {
 
     @Override
     public void appendFrame(List<Frame> frames) {
-        throw new UnReachableStateException();
+        // do nothing
     }
 }

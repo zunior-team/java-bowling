@@ -21,7 +21,7 @@ class FramesTest {
     void downPins() {
         Frames frames = Frames.init();
 
-        for(int i = 0 ; i < 12 ; ++i) {
+        for(int i = 0 ; i < 11 ; ++i) { // 한 게임에서 스트라이크는 최대 12번 던질 수 있다.
             frames.downPins(Pin.of(10));
             assertThat(frames.isBowlingEnd()).isFalse();
         }

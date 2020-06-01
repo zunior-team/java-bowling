@@ -19,9 +19,17 @@ public class Frames {
     }
 
     public void downPins(final Pin downPins) {
+        Frame curFrame = getCurFrame();
+        
+        curFrame.downPins(downPins);
+        curFrame.appendFrame(frames);
     }
 
     public boolean isBowlingEnd() {
-        return false;
+        return getCurFrame().isBowlingEnd();
+    }
+
+    private Frame getCurFrame() {
+        return frames.get(frames.size() - 1);
     }
 }
