@@ -17,7 +17,7 @@ class FramesTest {
     }
 
     @Test
-    @DisplayName("볼링공 던지기")
+    @DisplayName("볼링공 던지기, 볼링 종료 테스트")
     void downPins() {
         Frames frames = Frames.init();
 
