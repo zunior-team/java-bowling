@@ -67,9 +67,9 @@ class LastFrameTest {
     }
 
     @Test
-    @DisplayName("프레임 추가 시도시 예외 발생")
+    @DisplayName("프레임 추가 시도시 아무것도 안함")
     void appendFrame() {
-        assertThatExceptionOfType(UnReachableStateException.class)
-                .isThrownBy(() -> LastFrame.init().appendFrame(new ArrayList<>()));
+        assertThatCode(() -> LastFrame.init().appendFrame(new ArrayList<>()))
+                .doesNotThrowAnyException();
     }
 }

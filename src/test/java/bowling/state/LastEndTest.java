@@ -16,7 +16,10 @@ class LastEndTest {
     @Test
     @DisplayName("초기화")
     void init() {
-        assertThatCode(() -> LastEnd.init(new Stack<>()))
+        Stack<State> states = new Stack<>();
+        states.add(Ready.instance());
+
+        assertThatCode(() -> LastEnd.init(states))
                 .doesNotThrowAnyException();
     }
 
@@ -38,7 +41,10 @@ class LastEndTest {
     @Test
     @DisplayName("종료 상태는 true")
     void isEnd() {
-        assertThat(LastEnd.init(new Stack<>()).isEnd()).isTrue();
+        Stack<State> states = new Stack<>();
+        states.add(Ready.instance());
+
+        assertThat(LastEnd.init(states).isEnd()).isTrue();
     }
 
 }
