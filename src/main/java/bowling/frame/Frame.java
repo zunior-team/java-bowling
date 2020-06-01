@@ -14,7 +14,7 @@ public abstract class Frame {
         this.state = state;
     }
 
-    private void validate(State state) {
+    private void validate(final State state) {
         if (Objects.isNull(state)) {
             throw new IllegalArgumentException("State can't be a null to init frame");
         }
