@@ -1,6 +1,6 @@
 package bowling.frame;
 
-import bowling.state.Ready;
+import bowling.state.LastRunning;
 import bowling.state.State;
 
 import java.util.List;
@@ -12,7 +12,7 @@ public class LastFrame extends Frame {
     }
 
     public static LastFrame init() {
-        return new LastFrame(Ready.instance(), MAXIMUM_OF_FRAME);
+        return new LastFrame(LastRunning.init(), MAXIMUM_OF_FRAME);
     }
 
     @Override
