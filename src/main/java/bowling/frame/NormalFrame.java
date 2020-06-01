@@ -15,6 +15,10 @@ public class NormalFrame extends Frame {
         return new NormalFrame(Ready.instance(), BASE_NUM_OF_FRAME);
     }
 
+    private NormalFrame next() {
+        return new NormalFrame(Ready.instance(), frameNo + 1);
+    }
+
     @Override
     public boolean isBowlingEnd() {
         return false;
@@ -22,7 +26,9 @@ public class NormalFrame extends Frame {
 
     @Override
     public void appendFrame(final List<Frame> frames) {
-
+        if (isFrameEnd()) {
+            frames.add(next());
+        }
     }
 
 }
