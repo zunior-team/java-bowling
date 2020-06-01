@@ -15,7 +15,13 @@ public class NormalFrame extends Frame {
         return new NormalFrame(Ready.instance(), BASE_NUM_OF_FRAME);
     }
 
-    private NormalFrame next() {
+    private Frame next() {
+        final int nextFrameNo = frameNo + 1;
+
+        if(nextFrameNo == MAXIMUM_OF_FRAME) {
+            return LastFrame.init();
+        }
+
         return new NormalFrame(Ready.instance(), frameNo + 1);
     }
 

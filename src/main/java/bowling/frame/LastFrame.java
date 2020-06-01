@@ -1,12 +1,18 @@
 package bowling.frame;
 
+import bowling.state.Ready;
 import bowling.state.State;
 
 import java.util.List;
 
 public class LastFrame extends Frame {
+
     protected LastFrame(final State state, final int frameNo) {
         super(state, frameNo);
+    }
+
+    public static LastFrame init() {
+        return new LastFrame(Ready.instance(), MAXIMUM_OF_FRAME);
     }
 
     @Override
