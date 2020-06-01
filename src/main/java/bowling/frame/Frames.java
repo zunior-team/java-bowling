@@ -1,5 +1,7 @@
 package bowling.frame;
 
+import bowling.pin.Pin;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,5 +16,12 @@ public class Frames {
 
     public static Frames init() {
         return new Frames();
+    }
+
+    public void downPins(final Pin downPins) {
+    }
+
+    public boolean isBowlingEnd() {
+        return false;
     }
 }
