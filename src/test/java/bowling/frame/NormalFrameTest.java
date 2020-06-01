@@ -53,7 +53,6 @@ class NormalFrameTest {
         assertThat(NormalFrame.init().isBowlingEnd()).isFalse();
     }
 
-/*
     @ParameterizedTest
     @MethodSource
     @DisplayName("프레임이 끝났는지 아닌지")
@@ -62,10 +61,12 @@ class NormalFrameTest {
     }
 
     private static Stream<Arguments> isFrameEnd() {
+        Frame endFrame = NormalFrame.init();
+        endFrame.downPins(Pin.of(10));
+
         return Stream.of(
-                Arguments.of(new Frame(Ready.instance()) {}, false),
-                Arguments.of(new Frame(Ready.instance().downPins(Pin.of(10))) {}, true)
+                Arguments.of(NormalFrame.init(), false),
+                Arguments.of(endFrame, true)
         );
     }
-*/
 }
