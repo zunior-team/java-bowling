@@ -47,13 +47,13 @@ class NormalFrameTest {
         assertThatCode(() -> NormalFrame.init().downPins(Pin.of(10))).doesNotThrowAnyException();
     }
 
-/*
     @Test
     @DisplayName("볼링 끝 기본은 false")
     void isBowlingEnd() {
-        assertThat(FRAME.isBowlingEnd()).isFalse();
+        assertThat(NormalFrame.init().isBowlingEnd()).isFalse();
     }
 
+/*
     @ParameterizedTest
     @MethodSource
     @DisplayName("프레임이 끝났는지 아닌지")
