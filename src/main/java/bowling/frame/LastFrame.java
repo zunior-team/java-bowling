@@ -1,23 +1,22 @@
 package bowling.frame;
 
 import bowling.state.LastRunning;
-import bowling.state.State;
 
 import java.util.List;
 
 public class LastFrame extends Frame {
 
-    protected LastFrame(final State state, final int frameNo) {
-        super(state, frameNo);
+    protected LastFrame() {
+        super(LastRunning.init(), MAXIMUM_OF_FRAME);
     }
 
     public static LastFrame init() {
-        return new LastFrame(LastRunning.init(), MAXIMUM_OF_FRAME);
+        return new LastFrame();
     }
 
     @Override
     public boolean isBowlingEnd() {
-        return false;
+        return isFrameEnd();
     }
 
     @Override
