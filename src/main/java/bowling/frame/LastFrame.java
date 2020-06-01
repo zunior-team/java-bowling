@@ -1,5 +1,6 @@
 package bowling.frame;
 
+import bowling.exception.UnReachableStateException;
 import bowling.state.LastRunning;
 
 import java.util.List;
@@ -21,6 +22,6 @@ public class LastFrame extends Frame {
 
     @Override
     public void appendFrame(List<Frame> frames) {
-
+        throw new UnReachableStateException();
     }
 }

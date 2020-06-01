@@ -1,5 +1,6 @@
 package bowling.frame;
 
+import bowling.exception.UnReachableStateException;
 import bowling.pin.Pin;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -7,10 +8,10 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 
+import java.util.ArrayList;
 import java.util.stream.Stream;
 
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatCode;
+import static org.assertj.core.api.Assertions.*;
 
 @DisplayName("마지막 프레임 테스트")
 class LastFrameTest {
@@ -65,4 +66,10 @@ class LastFrameTest {
         );
     }
 
+    @Test
+    @DisplayName("프레임 추가 시도시 예외 발생")
+    void appendFrame() {
+        assertThatExceptionOfType(UnReachableStateException.class)
+                .isThrownBy(() -> LastFrame.init().appendFrame(new ArrayList<>()));
+    }
 }
