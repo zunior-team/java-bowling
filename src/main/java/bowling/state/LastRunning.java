@@ -35,11 +35,11 @@ public class LastRunning extends State {
             return LastEnd.init(states);
         }
 
-        giveExtraChange();
+        giveExtraChance();
         return this;
     }
 
-    private void giveExtraChange() {
+    private void giveExtraChance() {
         State lastState = getLastState();
 
         if (lastState.isCleanState()) { //스페어, 스트라이크면 한번 더 던질 기회를 준다

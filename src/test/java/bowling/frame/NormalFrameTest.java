@@ -13,5 +13,4 @@ class NormalFrameTest {
     void init() {
         assertThatCode(() -> NormalFrame.init()).doesNotThrowAnyException();
     }
-
 }

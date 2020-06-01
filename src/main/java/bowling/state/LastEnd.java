@@ -19,7 +19,7 @@ public class LastEnd extends EndState {
         }
 
         if (states.isEmpty()) {
-            throw new IllegalArgumentException("State can't be empty");
+            throw new IllegalArgumentException("States can't be empty");
         }
     }
 
