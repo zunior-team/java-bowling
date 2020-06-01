@@ -1,15 +1,22 @@
 package bowling.frame;
 
 import bowling.pin.Pin;
+import bowling.state.Ready;
+import bowling.state.State;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
+import org.junit.jupiter.params.provider.NullSource;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Stream;
 
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatCode;
+import static org.assertj.core.api.Assertions.*;
 
+// 추상 클래스에 대한 테스트는 어떻게 하는게 좋을까?
 @DisplayName("일반 프레임 테스트")
 class NormalFrameTest {
 
@@ -33,4 +40,40 @@ class NormalFrameTest {
         frame.appendFrame(frames);
         assertThat(frames).hasSize(1);
     }
+
+    @ParameterizedTest
+    @NullSource
+    @DisplayName("초기화 실패 : null")
+    void init(final State state) {
+        assertThatIllegalArgumentException()
+                .isThrownBy(() -> new NormalFrame(state) {});
+    }
+
+/*
+    @Test
+    @DisplayName("핀 쓰러뜨리기")
+    void downPins() {
+        assertThatCode(() -> FRAME.downPins(Pin.of(10))).doesNotThrowAnyException();
+    }
+
+    @Test
+    @DisplayName("볼링 끝 기본은 false")
+    void isBowlingEnd() {
+        assertThat(FRAME.isBowlingEnd()).isFalse();
+    }
+
+    @ParameterizedTest
+    @MethodSource
+    @DisplayName("프레임이 끝났는지 아닌지")
+    void isFrameEnd(final Frame frame, final boolean expected) {
+        assertThat(frame.isFrameEnd()).isEqualTo(expected);
+    }
+
+    private static Stream<Arguments> isFrameEnd() {
+        return Stream.of(
+                Arguments.of(new Frame(Ready.instance()) {}, false),
+                Arguments.of(new Frame(Ready.instance().downPins(Pin.of(10))) {}, true)
+        );
+    }
+*/
 }
