@@ -7,15 +7,17 @@ import java.util.List;
 import java.util.Objects;
 
 public abstract class Frame {
+    protected static final int BASE_NUM_OF_FRAME = 1;
     protected static final int MAXIMUM_OF_FRAME = 10;
 
     protected State state;
     protected int frameNo;
 
-    protected Frame(final State state) {
+    protected Frame(final State state, final int frameNo) {
         validate(state);
 
         this.state = state;
+        this.frameNo = frameNo;
     }
 
     private void validate(final State state) {

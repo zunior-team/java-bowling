@@ -23,7 +23,7 @@ class NormalFrameTest {
     @Test
     @DisplayName("초기화")
     void init() {
-        assertThatCode(() -> NormalFrame.init()).doesNotThrowAnyException();
+        assertThatCode(NormalFrame::init).doesNotThrowAnyException();
     }
 
     @Test
@@ -39,14 +39,6 @@ class NormalFrameTest {
         frame.downPins(Pin.of(5));
         frame.appendFrame(frames);
         assertThat(frames).hasSize(1);
-    }
-
-    @ParameterizedTest
-    @NullSource
-    @DisplayName("초기화 실패 : null")
-    void init(final State state) {
-        assertThatIllegalArgumentException()
-                .isThrownBy(() -> new NormalFrame(state) {});
     }
 
 /*
