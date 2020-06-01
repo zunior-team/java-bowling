@@ -2,19 +2,18 @@ package bowling.frame;
 
 import bowling.pin.Pin;
 import bowling.state.Ready;
-import bowling.state.State;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
-import org.junit.jupiter.params.provider.NullSource;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Stream;
 
-import static org.assertj.core.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatCode;
 
 // 추상 클래스에 대한 테스트는 어떻게 하는게 좋을까?
 @DisplayName("일반 프레임 테스트")
@@ -68,5 +67,19 @@ class NormalFrameTest {
                 Arguments.of(NormalFrame.init(), false),
                 Arguments.of(endFrame, true)
         );
+    }
+
+    @Test
+    @DisplayName("프레임 번호가 최대 사이즈와 같아진다면 LastFrame 을 생성한다")
+    void next() {
+        List<Frame> frames = new ArrayList<>();
+        NormalFrame endOfNormalFrame = new NormalFrame(Ready.instance(), 9);
+
+        endOfNormalFrame.downPins(Pin.of(10));
+        endOfNormalFrame.appendFrame(frames);
+
+        Frame lastFrame = frames.get(0);
+
+        assertThat(lastFrame).isInstanceOf(LastFrame.class);
     }
 }
