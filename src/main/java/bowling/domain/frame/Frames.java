@@ -1,9 +1,11 @@
 package bowling.domain.frame;
 
 import bowling.domain.pin.Pin;
+import bowling.dto.StateDtos;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Frames {
     private final List<Frame> frames;
@@ -32,4 +34,11 @@ public class Frames {
     private Frame getCurFrame() {
         return frames.get(frames.size() - 1);
     }
+
+    public List<StateDtos> getTotalStates() {
+        return frames.stream()
+                .map(Frame::getFrameState)
+                .collect(Collectors.toList());
+    }
+
 }
