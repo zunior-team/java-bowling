@@ -10,7 +10,7 @@ import static bowling.domain.frame.Frame.BASE_NUM_OF_FRAME;
 import static bowling.domain.frame.Frame.LAST_NUM_OF_FRAME;
 
 public class ConsoleOutput {
-    private static final String FRAME_FORMAT = " %-4s |";
+    private static final String FRAME_FORMAT = "  %-4s|";
     private static final String NAME_FORMAT = "| %4s |";
     private static final String NUMBER_FORMAT = "  %02d  |";
     private static final String CUR_PAYER_STATE_FORMAT = "%d프레임 투구 :";
