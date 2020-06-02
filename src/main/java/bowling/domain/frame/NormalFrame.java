@@ -18,7 +18,7 @@ public class NormalFrame extends Frame {
     private Frame initNextFrame() {
         final int nextFrameNo = frameNo + 1;
 
-        if(nextFrameNo == MAXIMUM_OF_FRAME) {
+        if(nextFrameNo == LAST_NUM_OF_FRAME) {
             return LastFrame.init();
         }
 

@@ -7,7 +7,7 @@ import java.util.List;
 public class LastFrame extends Frame {
 
     protected LastFrame() {
-        super(LastRunning.init(), MAXIMUM_OF_FRAME);
+        super(LastRunning.init(), LAST_NUM_OF_FRAME);
     }
 
     public static LastFrame init() {

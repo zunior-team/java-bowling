@@ -73,7 +73,7 @@ class NormalFrameTest {
     @DisplayName("프레임 번호가 최대 사이즈와 같아진다면 LastFrame 을 생성한다")
     void next() {
         List<Frame> frames = new ArrayList<>();
-        NormalFrame endOfNormalFrame = new NormalFrame(Ready.instance(), Frame.MAXIMUM_OF_FRAME - 1);
+        NormalFrame endOfNormalFrame = new NormalFrame(Ready.instance(), Frame.LAST_NUM_OF_FRAME - 1);
 
         endOfNormalFrame.downPins(Pin.of(10));
         endOfNormalFrame.appendFrame(frames);

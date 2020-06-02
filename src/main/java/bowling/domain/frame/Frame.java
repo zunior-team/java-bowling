@@ -8,8 +8,8 @@ import java.util.List;
 import java.util.Objects;
 
 public abstract class Frame {
-    protected static final int BASE_NUM_OF_FRAME = 1;
-    protected static final int MAXIMUM_OF_FRAME = 10;
+    public static final int BASE_NUM_OF_FRAME = 1;
+    public static final int LAST_NUM_OF_FRAME = 10;
 
     protected State state;
     protected int frameNo;
