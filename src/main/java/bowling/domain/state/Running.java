@@ -2,6 +2,9 @@ package bowling.domain.state;
 
 import bowling.domain.pin.Pin;
 
+import java.util.Collections;
+import java.util.List;
+
 public class Running extends State {
     private final Pin downPins;
 
@@ -22,5 +25,10 @@ public class Running extends State {
         }
 
         return Miss.init(this.downPins, downPins);
+    }
+
+    @Override
+    public List<Integer> getDownPins() {
+        return Collections.singletonList(downPins.getNumOfPins());
     }
 }

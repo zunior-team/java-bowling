@@ -47,4 +47,22 @@ class ReadyTest {
     void equals() {
         assertThat(Ready.instance()).isEqualTo(Ready.instance());
     }
+
+    @Test
+    @DisplayName("상태 가져오기")
+    void getState() {
+        State readyState = Ready.instance()
+                .getState()
+                .get(0);
+
+        assertThat(readyState).isInstanceOf(Ready.class);
+    }
+
+    @Test
+    @DisplayName("넘어진 핀 갯수 가져오기")
+    void getDownPins() {
+        State readyState = Ready.instance();
+
+        assertThat(readyState.getDownPins()).isEmpty();
+    }
 }

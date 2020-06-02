@@ -4,8 +4,7 @@ import bowling.domain.pin.Pin;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import static org.assertj.core.api.Assertions.assertThatCode;
-import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
+import static org.assertj.core.api.Assertions.*;
 
 @DisplayName("미스 상태 테스트")
 class MissTest {
@@ -23,4 +22,21 @@ class MissTest {
                 .isThrownBy(() -> Miss.init(Pin.of(5), Pin.of(5)));
     }
 
+    @Test
+    @DisplayName("상태 가져오기")
+    void getState() {
+        State missState = Miss.init(Pin.of(5), Pin.of(2))
+                .getState()
+                .get(0);
+
+        assertThat(missState).isInstanceOf(Miss.class);
+    }
+
+    @Test
+    @DisplayName("넘어진 핀 갯수 가져오기")
+    void getDownPins() {
+        State missState = Miss.init(Pin.of(5), Pin.of(2));
+
+        assertThat(missState.getDownPins()).containsExactly(5, 2);
+    }
 }

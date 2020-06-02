@@ -5,12 +5,19 @@ import bowling.domain.pin.Pin;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.util.List;
+
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 
 @DisplayName("종료 스테이트에 대한 테스트")
 class EndStateTest {
-    private static final EndState END_STATE = new EndState() {};
+    private static final EndState END_STATE = new EndState() {
+        @Override
+        public List<Integer> getDownPins() {
+            return null;
+        }
+    };
 
     @Test
     @DisplayName("종료 스테이트에서는 핀을 쓰러뜨리려 할 경우 예외가 발생한다")

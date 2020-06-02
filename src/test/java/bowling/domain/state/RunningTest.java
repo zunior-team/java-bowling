@@ -34,4 +34,22 @@ class RunningTest {
     void downPinsButPinsRemain() {
         assertThat(RUNNING.downPins(Pin.of(2))).isInstanceOf(Miss.class);
     }
+
+    @Test
+    @DisplayName("상태 가져오기")
+    void getState() {
+        State runningState = Running.init(Pin.of(5))
+                .getState()
+                .get(0);
+
+        assertThat(runningState).isInstanceOf(Running.class);
+    }
+
+    @Test
+    @DisplayName("넘어진 핀 갯수 가져오기")
+    void getDownPins() {
+        State runningState = Running.init(Pin.of(5));
+
+        assertThat(runningState.getDownPins()).containsExactly(5);
+    }
 }

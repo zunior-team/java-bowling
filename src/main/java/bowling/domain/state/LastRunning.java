@@ -2,6 +2,9 @@ package bowling.domain.state;
 
 import bowling.domain.pin.Pin;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 import java.util.Stack;
 
 public class LastRunning extends State {
@@ -55,6 +58,16 @@ public class LastRunning extends State {
     @Override
     public boolean isEnd() { // 3회 던졌건, 마지막 상태가 Miss 이면 끝난 거시다
         return tryCount == MAX_TRY_COUNT || getLastState().isMiss();
+    }
+
+    @Override
+    public List<State> getState() {
+        return new ArrayList<>(states);
+    }
+
+    @Override
+    public List<Integer> getDownPins() {
+        return Collections.emptyList();
     }
 
     private State getLastState() {

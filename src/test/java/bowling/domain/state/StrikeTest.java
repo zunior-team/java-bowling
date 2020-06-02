@@ -35,4 +35,21 @@ class StrikeTest {
         assertThat(Strike.instance()).isEqualTo(Strike.instance());
     }
 
+    @Test
+    @DisplayName("상태 가져오기")
+    void getState() {
+        State strikeState = Strike.instance()
+                .getState()
+                .get(0);
+
+        assertThat(strikeState).isInstanceOf(Strike.class);
+    }
+
+    @Test
+    @DisplayName("넘어진 핀 갯수 가져오기")
+    void getDownPins() {
+        State strike = Strike.instance();
+
+        assertThat(strike.getDownPins()).containsExactly(10);
+    }
 }

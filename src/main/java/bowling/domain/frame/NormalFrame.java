@@ -15,7 +15,7 @@ public class NormalFrame extends Frame {
         return new NormalFrame(Ready.instance(), BASE_NUM_OF_FRAME);
     }
 
-    private Frame next() {
+    private Frame initNextFrame() {
         final int nextFrameNo = frameNo + 1;
 
         if(nextFrameNo == MAXIMUM_OF_FRAME) {
@@ -33,7 +33,7 @@ public class NormalFrame extends Frame {
     @Override
     public void appendFrame(final List<Frame> frames) {
         if (isFrameEnd()) {
-            frames.add(next());
+            frames.add(initNextFrame());
         }
     }
 

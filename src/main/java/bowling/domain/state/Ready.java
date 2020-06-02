@@ -2,6 +2,9 @@ package bowling.domain.state;
 
 import bowling.domain.pin.Pin;
 
+import java.util.Collections;
+import java.util.List;
+
 public class Ready extends State {
 
     private Ready() {}
@@ -17,6 +20,11 @@ public class Ready extends State {
         }
 
         return Running.init(downPins);
+    }
+
+    @Override
+    public List<Integer> getDownPins() {
+        return Collections.emptyList();
     }
 
     private static class LazyHolder {

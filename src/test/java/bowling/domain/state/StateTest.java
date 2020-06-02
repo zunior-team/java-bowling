@@ -4,6 +4,8 @@ import bowling.domain.pin.Pin;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.util.List;
+
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 
@@ -12,6 +14,11 @@ class StateTest {
     private static final State STATE = new State() {
         @Override
         public State processDownPins(Pin downPins) {
+            return null;
+        }
+
+        @Override
+        public List<Integer> getDownPins() {
             return null;
         }
     };

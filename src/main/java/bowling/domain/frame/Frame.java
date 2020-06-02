@@ -2,6 +2,7 @@ package bowling.domain.frame;
 
 import bowling.domain.pin.Pin;
 import bowling.domain.state.State;
+import bowling.dto.StatesDto;
 
 import java.util.List;
 import java.util.Objects;
@@ -37,4 +38,5 @@ public abstract class Frame {
     public abstract boolean isBowlingEnd();
 
     public abstract void appendFrame(final List<Frame> frames);
+
 }

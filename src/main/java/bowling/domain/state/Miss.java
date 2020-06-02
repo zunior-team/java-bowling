@@ -2,6 +2,9 @@ package bowling.domain.state;
 
 import bowling.domain.pin.Pin;
 
+import java.util.Arrays;
+import java.util.List;
+
 public class Miss extends EndState {
     private final Pin firstDownPins;
     private final Pin secondDownPins;
@@ -29,5 +32,10 @@ public class Miss extends EndState {
     @Override
     public boolean isMiss() {
         return true;
+    }
+
+    @Override
+    public List<Integer> getDownPins() {
+        return Arrays.asList(firstDownPins.getNumOfPins(), secondDownPins.getNumOfPins());
     }
 }
