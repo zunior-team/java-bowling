@@ -7,11 +7,11 @@ import bowling.dto.StateDtos;
 import java.util.List;
 
 public class BowlingPlayer {
-    private final Player player;
+    private final PlayerName playerName;
     private final Frames frames;
 
     private BowlingPlayer(final String name) {
-        this.player = Player.init(name);
+        this.playerName = PlayerName.init(name);
         this.frames = Frames.init();
     }
 
@@ -28,7 +28,7 @@ public class BowlingPlayer {
     }
 
     public String getName() {
-        return player.getName();
+        return playerName.getName();
     }
 
     public List<StateDtos> getStates() {

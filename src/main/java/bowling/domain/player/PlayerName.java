@@ -1,11 +1,11 @@
 package bowling.domain.player;
 
-public class Player {
+public class PlayerName {
     public static final int LENGTH_OF_PLAYER_NAME = 3;
 
     private final String name;
 
-    private Player(final String name) {
+    private PlayerName(final String name) {
         validate(name);
 
         this.name = name;
@@ -21,8 +21,8 @@ public class Player {
         }
     }
 
-    public static Player init(final String name) {
-        return new Player(name);
+    public static PlayerName init(final String name) {
+        return new PlayerName(name);
     }
 
     public String getName() {
