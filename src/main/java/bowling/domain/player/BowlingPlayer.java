@@ -24,7 +24,7 @@ public class BowlingPlayer {
     }
 
     public boolean isGameEnd() {
-        return frames.isBowlingEnd();
+        return frames.isAllFrameEnd();
     }
 
     public String getName() {

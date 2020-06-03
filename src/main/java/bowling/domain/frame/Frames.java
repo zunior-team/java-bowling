@@ -27,8 +27,8 @@ public class Frames {
         curFrame.appendFrame(frames);
     }
 
-    public boolean isBowlingEnd() {
-        return getCurFrame().isBowlingEnd();
+    public boolean isAllFrameEnd() {
+        return getCurFrame().isLastFrameEnd();
     }
 
     private Frame getCurFrame() {

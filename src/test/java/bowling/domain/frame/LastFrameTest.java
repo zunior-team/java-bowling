@@ -25,7 +25,7 @@ class LastFrameTest {
     @MethodSource
     @DisplayName("볼링이 끝났는지")
     void isBowlingEnd(final LastFrame lastFrame, final boolean expected) {
-        assertThat(lastFrame.isBowlingEnd()).isEqualTo(expected);
+        assertThat(lastFrame.isLastFrameEnd()).isEqualTo(expected);
     }
 
     private static Stream<Arguments> isBowlingEnd() {

@@ -35,7 +35,7 @@ public abstract class Frame {
         return state.isEnd();
     }
 
-    public abstract boolean isBowlingEnd();
+    public abstract boolean isLastFrameEnd();
 
     public abstract void appendFrame(final List<Frame> frames);
 

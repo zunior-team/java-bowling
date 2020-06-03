@@ -26,7 +26,7 @@ public class NormalFrame extends Frame {
     }
 
     @Override
-    public boolean isBowlingEnd() {
+    public boolean isLastFrameEnd() {
         return false;
     }
 

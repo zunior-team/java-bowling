@@ -15,7 +15,7 @@ public class LastFrame extends Frame {
     }
 
     @Override
-    public boolean isBowlingEnd() {
+    public boolean isLastFrameEnd() {
         return isFrameEnd();
     }
 

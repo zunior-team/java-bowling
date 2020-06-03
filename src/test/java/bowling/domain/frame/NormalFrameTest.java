@@ -49,7 +49,7 @@ class NormalFrameTest {
     @Test
     @DisplayName("볼링 끝 기본은 false")
     void isBowlingEnd() {
-        assertThat(NormalFrame.init().isBowlingEnd()).isFalse();
+        assertThat(NormalFrame.init().isLastFrameEnd()).isFalse();
     }
 
     @ParameterizedTest

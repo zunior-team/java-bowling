@@ -23,11 +23,11 @@ class FramesTest {
 
         for(int i = 0 ; i < 11 ; ++i) { // 한 게임에서 스트라이크는 최대 12번 던질 수 있다.
             frames.downPins(Pin.of(10));
-            assertThat(frames.isBowlingEnd()).isFalse();
+            assertThat(frames.isAllFrameEnd()).isFalse();
         }
 
         frames.downPins(Pin.of(10));
-        assertThat(frames.isBowlingEnd()).isTrue();
+        assertThat(frames.isAllFrameEnd()).isTrue();
 
         assertThatExceptionOfType(UnReachableStateException.class)
                 .isThrownBy(() -> frames.downPins(Pin.of(10)));
