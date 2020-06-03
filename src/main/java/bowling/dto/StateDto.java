@@ -21,12 +21,24 @@ public class StateDto {
     }
 
     public int getFirstDownPins() {
+        verify(INDEX_OF_FIRST_DOWN_PINS);
+
         return state.getDownPins()
                 .get(INDEX_OF_FIRST_DOWN_PINS);
     }
 
     public int getSecondDownPins() {
+        verify(INDEX_OF_SECOND_DOWN_PINS);
+
         return state.getDownPins()
                 .get(INDEX_OF_SECOND_DOWN_PINS);
+    }
+
+    private void verify(final int index) {
+        if (state.getDownPins().size() <= index) {
+            throw new IllegalArgumentException(
+                    String.format("Can't access down pins of %d", index)
+            );
+        }
     }
 }
