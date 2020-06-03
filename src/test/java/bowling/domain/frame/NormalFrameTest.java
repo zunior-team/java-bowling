@@ -82,4 +82,30 @@ class NormalFrameTest {
 
         assertThat(lastFrame).isInstanceOf(LastFrame.class);
     }
+
+    @ParameterizedTest
+    @MethodSource
+    @DisplayName("프레임이 끝나지 않았다면 점수를 구할 수 없다. -1")
+    void getScoreNotEndYet(final Frame frame) {
+        assertThat(frame.getScore()).isEqualTo(-1);
+    }
+
+    private static Stream<Frame> getScoreNotEndYet() {
+        // ready, running
+        NormalFrame readyStateFrame = NormalFrame.init();
+
+        NormalFrame runningStateFrame = NormalFrame.init();
+        runningStateFrame.downPins(Pin.of(5));
+
+        return Stream.of(
+                readyStateFrame,
+                runningStateFrame
+        );
+    }
+
+    @Test
+    @DisplayName("프레임의 점수는 end state일 때만 구할 수 있다")
+    void getScore() {
+
+    }
 }

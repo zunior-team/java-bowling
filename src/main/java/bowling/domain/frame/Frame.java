@@ -43,4 +43,7 @@ public abstract class Frame {
         return StateDtos.of(state.getState());
     }
 
+    public int getScore() {
+        return -1;
+    }
 }
