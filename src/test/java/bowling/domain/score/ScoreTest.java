@@ -1,6 +1,6 @@
 package bowling.domain.score;
 
-import bowling.exception.UnCalculatableException;
+import bowling.exception.IncalculableException;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -22,7 +22,7 @@ class ScoreTest {
     void of() {
         Score score = Score.of(10);
 
-        assertThatThrownBy(() -> score.add(5)).isInstanceOf(UnCalculatableException.class);
+        assertThatThrownBy(() -> score.add(5)).isInstanceOf(IncalculableException.class);
     }
 
     @Test
@@ -39,7 +39,7 @@ class ScoreTest {
         Score score = Score.ofSpare()
                 .add(5);
 
-        assertThatThrownBy(() -> score.add(5)).isInstanceOf(UnCalculatableException.class);
+        assertThatThrownBy(() -> score.add(5)).isInstanceOf(IncalculableException.class);
     }
 
     @Test
@@ -53,7 +53,7 @@ class ScoreTest {
     @DisplayName("strike 로 생성된 score 는 세번이상 더하려고 하면 예외가 발생한다.")
     void ofStrikeThrowException() {
         assertThatThrownBy(() -> Score.ofStrike().add(10).add(10).add(5))
-                .isInstanceOf(UnCalculatableException.class);
+                .isInstanceOf(IncalculableException.class);
     }
 
     @Test
@@ -62,5 +62,12 @@ class ScoreTest {
         assertThat(Score.of(5)).isEqualTo(Score.of(5));
         assertThat(Score.ofSpare()).isEqualTo(Score.ofSpare());
         assertThat(Score.ofStrike()).isEqualTo(Score.ofStrike());
+        assertThat(Score.INCALCULABLE).isEqualTo(Score.INCALCULABLE);
+    }
+
+    @Test
+    @DisplayName("계산 불가 객체")
+    void incalculableInstance() {
+        assertThatThrownBy(() -> Score.INCALCULABLE.add(10)).isInstanceOf(IncalculableException.class);
     }
 }

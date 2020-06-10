@@ -1,11 +1,11 @@
 package bowling.domain.score;
 
-import bowling.exception.UnCalculatableException;
+import bowling.exception.IncalculableException;
 
 import java.util.Objects;
 
 public class Score {
-    private static final Score NOT_CALCULATED_YET = new Score(-1, 0);
+    public static final Score INCALCULABLE = new Score(-1, 0);
 
     private final int score;
     private final int left;
@@ -37,7 +37,7 @@ public class Score {
         validateScore(score);
 
         if (left == 0) {
-            throw new UnCalculatableException();
+            throw new IncalculableException();
         }
     }
 
