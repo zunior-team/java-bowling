@@ -48,4 +48,22 @@ class MissTest {
 
         assertThat(miss.getScore()).isEqualTo(Score.of(7));
     }
+
+    @Test
+    @DisplayName("left 가 1인 경우 첫번째 쓰러뜨린 핀의 개수 만큼만 더하고 리턴한다")
+    void addScore() {
+        Score score = Score.ofSpare();
+        Miss miss = Miss.init(Pin.of(5), Pin.of(2));
+
+        assertThat(miss.addScore(score)).isEqualTo(Score.of(15, 0));
+    }
+
+    @Test
+    @DisplayName("left 가 2인 경우 첫번째, 두번째 쓰러뜨린 핀의 개수를 모두 더하고 리턴한다")
+    void addScoreHavingLeft2() {
+        Score score = Score.ofStrike();
+        Miss miss = Miss.init(Pin.of(5), Pin.of(2));
+
+        assertThat(miss.addScore(score)).isEqualTo(Score.of(17, 0));
+    }
 }
