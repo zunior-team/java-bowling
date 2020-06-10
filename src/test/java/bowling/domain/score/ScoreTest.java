@@ -32,7 +32,7 @@ class ScoreTest {
     }
 
     @Test
-    @DisplayName("spare 로 생성된 score 는 한번 더할수 있다.")
+    @DisplayName("spare 로 생성된 score 는 한 번 더할수 있다.")
     void ofSpare() {
         Score score = Score.ofSpare();
 
@@ -41,7 +41,7 @@ class ScoreTest {
     }
 
     @Test
-    @DisplayName("spare 로 생성된 score 는 두번 이상 더할 수 없다.")
+    @DisplayName("spare 로 생성된 score 는 두 번 이상 더할 수 없다.")
     void ofSpareAddMoreThanOnce() {
         Score score = Score.ofSpare()
                 .add(5);
@@ -51,7 +51,7 @@ class ScoreTest {
     }
 
     @Test
-    @DisplayName("strike 로 생성된 score 는 두번까지 더할 수 있다.")
+    @DisplayName("strike 로 생성된 score 는 두 번까지 더할 수 있다.")
     void ofStrike() {
         assertThatCode(() -> Score.ofStrike().add(5))
                 .doesNotThrowAnyException();
@@ -61,7 +61,7 @@ class ScoreTest {
     }
 
     @Test
-    @DisplayName("strike 로 생성된 score 는 세번이상 더하려고 하면 예외가 발생한다.")
+    @DisplayName("strike 로 생성된 score 는 세 번 이상 더하려고 하면 예외가 발생한다.")
     void ofStrikeThrowException() {
         assertThatThrownBy(() -> Score.ofStrike().add(10).add(10).add(5))
                 .isInstanceOf(IncalculableException.class);
