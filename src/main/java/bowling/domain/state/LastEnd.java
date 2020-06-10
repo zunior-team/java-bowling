@@ -1,5 +1,7 @@
 package bowling.domain.state;
 
+import bowling.domain.score.Score;
+
 import java.util.*;
 
 public class LastEnd extends EndState {
@@ -34,5 +36,23 @@ public class LastEnd extends EndState {
     @Override
     public List<Integer> getDownPins() {
         return Collections.emptyList();
+    }
+
+    @Override
+    public Score getScore() {
+        List<State> states = new ArrayList<>(this.states);
+        State finalState = states.remove(0);
+
+        Score score = finalState.getScore();
+
+        for (State state : states) {
+            score = state.addScore(score);
+
+            if (score.isCalculable()) {
+                break;
+            }
+        }
+
+        return score;
     }
 }

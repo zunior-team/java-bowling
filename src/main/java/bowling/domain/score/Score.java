@@ -30,6 +30,7 @@ public class Score {
 
     public Score add(final int score) {
         validate(score);
+
         return new Score(this.score + score, left - 1);
     }
 
@@ -47,7 +48,7 @@ public class Score {
         }
     }
 
-    public boolean isCalculatable() {
+    public boolean isCalculable() {
         return left == 0;
     }
 

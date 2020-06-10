@@ -1,6 +1,7 @@
 package bowling.domain.state;
 
 import bowling.domain.pin.Pin;
+import bowling.domain.score.Score;
 
 import java.util.Collections;
 import java.util.List;
@@ -26,5 +27,10 @@ public class Strike extends EndState {
     @Override
     public List<Integer> getDownPins() {
         return Collections.singletonList(Pin.MAXIMUM_SIZE_OF_PIN);
+    }
+
+    @Override
+    public Score getScore() {
+        return Score.ofStrike();
     }
 }

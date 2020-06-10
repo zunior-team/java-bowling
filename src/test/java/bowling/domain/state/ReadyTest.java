@@ -1,6 +1,7 @@
 package bowling.domain.state;
 
 import bowling.domain.pin.Pin;
+import bowling.domain.score.Score;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -64,5 +65,13 @@ class ReadyTest {
         State readyState = Ready.instance();
 
         assertThat(readyState.getDownPins()).isEmpty();
+    }
+
+    @Test
+    @DisplayName("준비 상태는 점수 계산을 할 수 없다")
+    void getScore() {
+        Ready ready = Ready.instance();
+
+        assertThat(ready.getScore()).isEqualTo(Score.INCALCULABLE);
     }
 }
