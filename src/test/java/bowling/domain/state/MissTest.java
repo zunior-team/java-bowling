@@ -44,7 +44,8 @@ class MissTest {
     @Test
     @DisplayName("미스 상태에서는 점수를 계산할 수 있다.")
     void getScore() {
+        Miss miss = Miss.init(Pin.of(5), Pin.of(2));
 
-
+        assertThat(miss.getScore()).isEqualTo(Score.of(7));
     }
 }
