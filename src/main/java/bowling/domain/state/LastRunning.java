@@ -77,7 +77,7 @@ public class LastRunning extends State {
     protected Score add(Score prevScore) {
         return states.stream()
                 .reduce(prevScore,
-                        (byScore, state) -> state.addScore(byScore),
+                        (viaScore, state) -> state.addScore(viaScore),
                         (x, y) -> { throw new ParallelNotSupportException(); });
     }
 
