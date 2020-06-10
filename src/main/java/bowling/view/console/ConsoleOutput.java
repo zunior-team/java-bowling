@@ -49,6 +49,20 @@ public class ConsoleOutput {
         showScoreOfPlayer(player);
     }
 
+    private static void showFrameStateOfPlayer(final PlayerStateDto player) {
+        System.out.print(String.format(NAME_FORMAT, player.getName()));
+
+        player.getStates()
+                .stream()
+                .map(StatesStringConverter::convert)
+                .forEach(state -> System.out.print(String.format(FRAME_FORMAT, state)));
+
+        IntStream.range(player.getCurFrameNo(), LAST_NUM_OF_FRAME)
+                .forEach(noStr -> System.out.print(String.format(FRAME_FORMAT, EMPTY_STR)));
+
+        newLine();
+    }
+
     private static void showScoreOfPlayer(final PlayerStateDto player) {
         System.out.print(String.format(NAME_FORMAT, EMPTY_STR));
 
@@ -60,20 +74,6 @@ public class ConsoleOutput {
                 .forEach(score -> System.out.print(String.format(SCORE_FORMAT, score)));
 
         IntStream.range(player.getScores().size(), LAST_NUM_OF_FRAME)
-                .forEach(noStr -> System.out.print(String.format(FRAME_FORMAT, EMPTY_STR)));
-
-        newLine();
-    }
-
-    private static void showFrameStateOfPlayer(final PlayerStateDto player) {
-        System.out.print(String.format(NAME_FORMAT, player.getName()));
-
-        player.getStates()
-                .stream()
-                .map(StatesStringConverter::convert)
-                .forEach(state -> System.out.print(String.format(FRAME_FORMAT, state)));
-
-        IntStream.range(player.getCurFrameNo(), LAST_NUM_OF_FRAME)
                 .forEach(noStr -> System.out.print(String.format(FRAME_FORMAT, EMPTY_STR)));
 
         newLine();
