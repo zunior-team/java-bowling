@@ -1,6 +1,7 @@
 package bowling.domain.frame;
 
 import bowling.domain.pin.Pin;
+import bowling.domain.score.Score;
 import bowling.domain.state.Ready;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -85,9 +86,9 @@ class NormalFrameTest {
 
     @ParameterizedTest
     @MethodSource
-    @DisplayName("프레임이 끝나지 않았다면 점수를 구할 수 없다. -1")
+    @DisplayName("프레임이 끝나지 않았다면 점수를 구할 수 없다.")
     void getScoreNotEndYet(final Frame frame) {
-        assertThat(frame.getScore()).isEqualTo(-1);
+        assertThat(frame.getScore()).isEqualTo(Score.INCALCULABLE);
     }
 
     private static Stream<Frame> getScoreNotEndYet() {

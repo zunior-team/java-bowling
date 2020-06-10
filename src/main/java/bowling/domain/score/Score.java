@@ -79,12 +79,4 @@ public class Score {
     public int hashCode() {
         return Objects.hash(score, left);
     }
-
-    @Override
-    public String toString() {
-        return "Score{" +
-                "score=" + score +
-                ", left=" + left +
-                '}';
-    }
 }
