@@ -1,33 +1,55 @@
 package bowling.domain.score;
 
-import java.util.ArrayList;
-import java.util.List;
+import bowling.exception.UnCalculatableException;
 
 public class Score {
-    private static final Score NOT_CALCULATED_YET = new Score(-1);
+    private static final Score NOT_CALCULATED_YET = new Score(-1, 0);
 
-    private final int size;
-    private final List<Integer> score;
+    private final int score;
+    private final int left;
 
-    private Score(final int size) {
-        this.size = size;
-        score = new ArrayList<>();
+    private Score(final int score, final int left) {
+        this.score = score;
+        this.left = left;
     }
 
-    public static Score init() {
-        return new Score(2);
-    }
-
-    public static Score ofSpare() {
-        return new Score(3);
+    public static Score of(final int score) {
+        validateScore(score);
+        return new Score(score, 0);
     }
 
     public static Score ofStrike() {
-        return new Score(3);
+        return new Score(10, 2);
     }
 
-    private boolean isCalculatable() {
-        return score.size() == size;
+    public static Score ofSpare() {
+        return new Score(10, 1);
     }
 
+    public Score add(final int score) {
+        validate(score);
+        return new Score(this.score + score, left - 1);
+    }
+
+    private void validate(int score) {
+        validateScore(score);
+
+        if (left == 0) {
+            throw new UnCalculatableException();
+        }
+    }
+
+    private static void validateScore(int score) {
+        if (score < 0) {
+            throw new IllegalArgumentException("Can't add negative value");
+        }
+    }
+
+    public boolean isCalculatable() {
+        return left == 0;
+    }
+
+    public int getScore() {
+        return score;
+    }
 }
