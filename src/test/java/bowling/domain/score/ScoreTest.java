@@ -12,9 +12,14 @@ class ScoreTest {
     @Test
     @DisplayName("초기화")
     void init() {
-        assertThatCode(() -> Score.of(0)).doesNotThrowAnyException();
-        assertThatCode(() -> Score.ofSpare()).doesNotThrowAnyException();
-        assertThatCode(() -> Score.ofStrike()).doesNotThrowAnyException();
+        assertThatCode(() -> Score.of(0))
+                .doesNotThrowAnyException();
+
+        assertThatCode(() -> Score.ofSpare())
+                .doesNotThrowAnyException();
+
+        assertThatCode(() -> Score.ofStrike())
+                .doesNotThrowAnyException();
     }
 
     @Test
@@ -22,7 +27,8 @@ class ScoreTest {
     void of() {
         Score score = Score.of(10);
 
-        assertThatThrownBy(() -> score.add(5)).isInstanceOf(IncalculableException.class);
+        assertThatThrownBy(() -> score.add(5))
+                .isInstanceOf(IncalculableException.class);
     }
 
     @Test
@@ -30,7 +36,8 @@ class ScoreTest {
     void ofSpare() {
         Score score = Score.ofSpare();
 
-        assertThatCode(() -> score.add(1)).doesNotThrowAnyException();
+        assertThatCode(() -> score.add(1))
+                .doesNotThrowAnyException();
     }
 
     @Test
@@ -39,14 +46,18 @@ class ScoreTest {
         Score score = Score.ofSpare()
                 .add(5);
 
-        assertThatThrownBy(() -> score.add(5)).isInstanceOf(IncalculableException.class);
+        assertThatThrownBy(() -> score.add(5))
+                .isInstanceOf(IncalculableException.class);
     }
 
     @Test
     @DisplayName("strike 로 생성된 score 는 두번까지 더할 수 있다.")
     void ofStrike() {
-        assertThatCode(() -> Score.ofStrike().add(5)).doesNotThrowAnyException();
-        assertThatCode(() -> Score.ofStrike().add(5).add(5)).doesNotThrowAnyException();
+        assertThatCode(() -> Score.ofStrike().add(5))
+                .doesNotThrowAnyException();
+
+        assertThatCode(() -> Score.ofStrike().add(5).add(5))
+                .doesNotThrowAnyException();
     }
 
     @Test
@@ -68,6 +79,7 @@ class ScoreTest {
     @Test
     @DisplayName("계산 불가 객체")
     void incalculableInstance() {
-        assertThatThrownBy(() -> Score.INCALCULABLE.add(10)).isInstanceOf(IncalculableException.class);
+        assertThatThrownBy(() -> Score.INCALCULABLE.add(10))
+                .isInstanceOf(IncalculableException.class);
     }
 }
