@@ -1,6 +1,7 @@
 package bowling.domain.state;
 
 import bowling.domain.pin.Pin;
+import bowling.domain.score.Score;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -19,6 +20,11 @@ class StateTest {
 
         @Override
         public List<Integer> getDownPins() {
+            return null;
+        }
+
+        @Override
+        protected Score add(Score prevScore) {
             return null;
         }
     };

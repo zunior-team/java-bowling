@@ -1,5 +1,6 @@
 package bowling.domain.state;
 
+import bowling.domain.score.Score;
 import bowling.exception.UnReachableStateException;
 import bowling.domain.pin.Pin;
 import org.junit.jupiter.api.DisplayName;
@@ -15,6 +16,11 @@ class EndStateTest {
     private static final EndState END_STATE = new EndState() {
         @Override
         public List<Integer> getDownPins() {
+            return null;
+        }
+
+        @Override
+        protected Score add(Score prevScore) {
             return null;
         }
     };
