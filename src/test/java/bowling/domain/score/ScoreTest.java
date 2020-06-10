@@ -24,4 +24,12 @@ class ScoreTest {
 
         assertThatThrownBy(() -> score.add(5)).isInstanceOf(UnCalculatableException.class);
     }
+
+    @Test
+    @DisplayName("spare 로 생성된 score 는 한번 더할수 있다.")
+    void ofSpare() {
+        Score score = Score.ofSpare();
+
+        assertThatCode(() -> score.add(1)).doesNotThrowAnyException();
+    }
 }
