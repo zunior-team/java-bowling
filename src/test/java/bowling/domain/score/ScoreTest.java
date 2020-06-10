@@ -32,4 +32,13 @@ class ScoreTest {
 
         assertThatCode(() -> score.add(1)).doesNotThrowAnyException();
     }
+
+    @Test
+    @DisplayName("spare 로 생성된 score 는 두번 이상 더할 수 없다.")
+    void ofSpareAddMoreThanOnce() {
+        Score score = Score.ofSpare()
+                .add(5);
+
+        assertThatThrownBy(() -> score.add(5)).isInstanceOf(UnCalculatableException.class);
+    }
 }
