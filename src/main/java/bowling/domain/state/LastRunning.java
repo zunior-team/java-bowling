@@ -1,6 +1,7 @@
 package bowling.domain.state;
 
 import bowling.domain.pin.Pin;
+import bowling.domain.score.Score;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -68,6 +69,15 @@ public class LastRunning extends State {
     @Override
     public List<Integer> getDownPins() {
         return Collections.emptyList();
+    }
+
+    @Override
+    protected Score add(Score prevScore) {
+        for (State state : states) {
+            prevScore = state.addScore(prevScore);
+        }
+
+        return prevScore;
     }
 
     private State getLastState() {

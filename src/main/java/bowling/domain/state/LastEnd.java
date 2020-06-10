@@ -44,15 +44,19 @@ public class LastEnd extends EndState {
         State finalState = states.remove(0);
 
         Score score = finalState.getScore();
-
         for (State state : states) {
             score = state.addScore(score);
-
-            if (score.isCalculable()) {
-                break;
-            }
         }
 
         return score;
+    }
+
+    @Override
+    protected Score add(Score prevScore) {
+        for (State state : states) {
+            prevScore = state.addScore(prevScore);
+        }
+
+        return prevScore;
     }
 }

@@ -46,6 +46,12 @@ public abstract class State {
     }
 
     public Score addScore(final Score prevScore) {
-        return prevScore;
+        if (prevScore.isCalculable()) {
+            return prevScore;
+        }
+
+        return add(prevScore);
     }
+
+    protected abstract Score add(final Score prevScore);
 }

@@ -31,4 +31,15 @@ public class Spare extends EndState {
     public Score getScore() {
         return Score.ofSpare();
     }
+
+    @Override
+    protected Score add(Score prevScore) {
+        prevScore =  prevScore.add(downPins.getNumOfPins());
+
+        if (prevScore.isCalculable()) {
+            return prevScore;
+        }
+
+        return prevScore.add(Pin.MAXIMUM_SIZE_OF_PIN - downPins.getNumOfPins());
+    }
 }

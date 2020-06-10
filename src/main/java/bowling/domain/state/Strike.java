@@ -33,4 +33,9 @@ public class Strike extends EndState {
     public Score getScore() {
         return Score.ofStrike();
     }
+
+    @Override
+    protected Score add(final Score prevScore) {
+        return prevScore.add(Pin.MAXIMUM_SIZE_OF_PIN);
+    }
 }
