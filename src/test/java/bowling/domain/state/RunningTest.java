@@ -1,6 +1,7 @@
 package bowling.domain.state;
 
 import bowling.domain.pin.Pin;
+import bowling.domain.score.Score;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -51,5 +52,13 @@ class RunningTest {
         State runningState = Running.init(Pin.of(5));
 
         assertThat(runningState.getDownPins()).containsExactly(5);
+    }
+
+    @Test
+    @DisplayName("프레임 진행중에는 점수를 계산할 수 없다")
+    void getScore() {
+        Ready ready = Ready.instance();
+
+        assertThat(ready.getScore()).isEqualTo(Score.INCALCULABLE);
     }
 }

@@ -1,5 +1,6 @@
 package bowling.domain.frame;
 
+import bowling.domain.score.Score;
 import bowling.domain.state.LastRunning;
 
 import java.util.List;
@@ -22,5 +23,10 @@ public class LastFrame extends Frame {
     @Override
     public void appendFrame(final List<Frame> frames) {
         // do nothing
+    }
+
+    @Override
+    public Score addBonusScore(Score score) {
+        return null;
     }
 }

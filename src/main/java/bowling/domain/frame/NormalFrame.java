@@ -1,11 +1,13 @@
 package bowling.domain.frame;
 
+import bowling.domain.score.Score;
 import bowling.domain.state.Ready;
 import bowling.domain.state.State;
 
 import java.util.List;
 
 public class NormalFrame extends Frame {
+    private Frame nextFrame = DummyFrame.instance();
 
     protected NormalFrame(final State state, final int frameNo) {
         super(state, frameNo);
@@ -33,8 +35,17 @@ public class NormalFrame extends Frame {
     @Override
     public void appendFrame(final List<Frame> frames) {
         if (isFrameEnd()) {
-            frames.add(initNextFrame());
+            return;
         }
+
+        Frame newFrame = initNextFrame();
+        frames.add(newFrame);
+        newFrame = nextFrame;
+    }
+
+    @Override
+    public Score addBonusScore(Score score) {
+        return null;
     }
 
 }
