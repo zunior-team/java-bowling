@@ -1,6 +1,7 @@
 package bowling.domain.state;
 
 import bowling.domain.score.Score;
+import bowling.exception.ParallelNotSupportException;
 
 import java.util.*;
 
@@ -49,10 +50,9 @@ public class LastEnd extends EndState {
 
     @Override
     protected Score add(Score prevScore) {
-        for (State state : states) {
-            prevScore = state.addScore(prevScore);
-        }
-
-        return prevScore;
+        return states.stream()
+                .reduce(prevScore,
+                        (byScore, state) -> state.addScore(byScore),
+                        (x, y) -> { throw new ParallelNotSupportException(); });
     }
 }
