@@ -44,25 +44,18 @@ public class NormalFrame extends Frame {
     }
 
     @Override
-    public Score addBonusScore(Score score) {
-        score = state.addScore(score);
-
-        if (!score.isCalculable()) {
-            score = nextFrame.addBonusScore(score);
-        }
+    public Score getScore() {
+        Score score = state.calculateScore();
+        score = nextFrame.addBonusScore(score);
 
         return score;
     }
 
     @Override
-    public Score getScore() {
-        Score score = state.calculateScore();
-
-        if (!score.isCalculable()) {
-            score = nextFrame.addBonusScore(score);
-        }
+    public Score addBonusScore(Score score) {
+        score = state.addScore(score);
+        score = nextFrame.addBonusScore(score);
 
         return score;
     }
-
 }
