@@ -92,9 +92,7 @@ class LastEndTest {
     @ParameterizedTest
     @MethodSource
     @DisplayName("마지막 프레임 종료 상태는 점수를 구할 수 있다.")
-    void getScore(final Stack<State> states, final Score expected) {
-        LastEnd lastEnd = LastEnd.init(states);
-
+    void getScore(final LastEnd lastEnd, final Score expected) {
         assertThat(lastEnd.calculateScore()).isEqualTo(expected);
     }
 
