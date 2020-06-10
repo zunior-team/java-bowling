@@ -83,4 +83,13 @@ class ReadyTest {
 
         assertThat(ready.addScore(score)).isEqualTo(score);
     }
+
+    @Test
+    @DisplayName("모돈 상태에서 left 가 0 인경우 원래 score 를 리턴한다")
+    void addScoreWithLeftCountIsZero() {
+        Score score = Score.of(5);
+        Ready ready = Ready.instance();
+
+        assertThat(ready.addScore(score)).isEqualTo(score);
+    }
 }
