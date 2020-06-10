@@ -74,4 +74,13 @@ class ReadyTest {
 
         assertThat(running.getScore()).isEqualTo(Score.INCALCULABLE);
     }
+
+    @Test
+    @DisplayName("준비 상태에서는 점수를 더하더라도 아무 변화가 없다")
+    void addScore() {
+        Score score = Score.ofSpare(); //left != 0
+        Ready ready = Ready.instance();
+
+        assertThat(ready.addScore(score)).isEqualTo(score);
+    }
 }
