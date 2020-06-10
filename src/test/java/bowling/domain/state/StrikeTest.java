@@ -1,5 +1,6 @@
 package bowling.domain.state;
 
+import bowling.domain.pin.Pin;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -51,5 +52,13 @@ class StrikeTest {
         State strike = Strike.instance();
 
         assertThat(strike.getDownPins()).containsExactly(10);
+    }
+
+    @Test
+    @DisplayName("스트라이크 상태는 점수를 구하기 위해 추가적인 정보가 더 필요하다")
+    void getScore() {
+        Strike strike = Strike.instance();
+
+        assertThat(strike.getScore().isCalculable()).isFalse();
     }
 }
