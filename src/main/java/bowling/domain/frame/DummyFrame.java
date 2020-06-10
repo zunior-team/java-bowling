@@ -22,7 +22,7 @@ public class DummyFrame extends Frame {
 
     @Override
     public void appendFrame(List<Frame> frames) {
-        // do notrhing
+        // do nothing
     }
 
     @Override
