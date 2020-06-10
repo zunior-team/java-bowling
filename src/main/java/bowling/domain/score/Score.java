@@ -15,6 +15,11 @@ public class Score {
         this.left = left;
     }
 
+    public static Score of(final int score, final int left) {
+        validateScore(score);
+        return new Score(score, left);
+    }
+
     public static Score of(final int score) {
         validateScore(score);
         return new Score(score, 0);

@@ -61,4 +61,24 @@ class RunningTest {
 
         assertThat(ready.getScore()).isEqualTo(Score.INCALCULABLE);
     }
+
+
+    @Test
+    @DisplayName("score 를 더하면 본인이 가지고 있는 pin 만큼 더한 값을 리턴한다")
+    void addScore() {
+        Score score = Score.ofSpare();
+        Running running = Running.init(Pin.of(5));
+
+        assertThat(running.addScore(score)).isEqualTo(Score.of(15, 0));
+    }
+
+    @Test
+    @DisplayName("score 를 더하면 left 카운트가 하나 줄어든다.")
+    void addScoreOfStrike() {
+        Score score = Score.ofStrike();
+        Running running = Running.init(Pin.of(5));
+
+        assertThat(running.addScore(score)).isEqualTo(Score.of(15, 1));
+    }
+
 }
