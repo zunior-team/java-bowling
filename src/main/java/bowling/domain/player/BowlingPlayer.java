@@ -2,6 +2,7 @@ package bowling.domain.player;
 
 import bowling.domain.frame.Frames;
 import bowling.domain.pin.Pin;
+import bowling.dto.ScoreDto;
 import bowling.dto.StateDtos;
 
 import java.util.List;
@@ -33,5 +34,9 @@ public class BowlingPlayer {
 
     public List<StateDtos> getStates() {
         return frames.getTotalStates();
+    }
+
+    public List<ScoreDto> getScores() {
+        return frames.getScores();
     }
 }

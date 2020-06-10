@@ -28,7 +28,7 @@ public class Spare extends EndState {
     }
 
     @Override
-    public Score getScore() {
+    public Score calculateScore() {
         return Score.ofSpare();
     }
 

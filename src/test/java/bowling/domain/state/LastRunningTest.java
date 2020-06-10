@@ -3,7 +3,6 @@ package bowling.domain.state;
 import bowling.domain.pin.Pin;
 import bowling.domain.score.Score;
 import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -88,7 +87,7 @@ class LastRunningTest {
     void getScore() {
         LastRunning lastRunning = LastRunning.init();
 
-        assertThat(lastRunning.getScore()).isEqualTo(Score.INCALCULABLE);
+        assertThat(lastRunning.calculateScore()).isEqualTo(Score.INCALCULABLE);
     }
 
     @ParameterizedTest

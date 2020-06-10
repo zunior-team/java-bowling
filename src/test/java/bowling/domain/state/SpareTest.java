@@ -40,7 +40,7 @@ class SpareTest {
     void getScore() {
         Spare spare = Spare.init(Pin.of(5));
 
-        assertThat(spare.getScore().isCalculable()).isFalse();
+        assertThat(spare.calculateScore().isCalculable()).isFalse();
     }
 
     @Test

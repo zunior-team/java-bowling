@@ -35,11 +35,11 @@ public class LastEnd extends EndState {
     }
 
     @Override
-    public Score getScore() {
+    public Score calculateScore() {
         List<State> states = new ArrayList<>(this.states);
         State finalState = states.remove(0);
 
-        Score score = finalState.getScore();
+        Score score = finalState.calculateScore();
         for (State state : states) {
             score = state.addScore(score);
         }

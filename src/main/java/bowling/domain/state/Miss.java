@@ -41,7 +41,7 @@ public class Miss extends EndState {
     }
 
     @Override
-    public Score getScore() {
+    public Score calculateScore() {
         return Score.of(firstDownPins.getNumOfPins() + secondDownPins.getNumOfPins());
     }
 

@@ -8,10 +8,12 @@ public class PlayerStateDto {
     private final String name;
     private final int curFrameNo;
     private final List<StateDtos> states;
+    private final List<ScoreDto> scores;
 
     private PlayerStateDto(final BowlingPlayer player) {
         this.name = player.getName();
         this.states = player.getStates();
+        this.scores = player.getScores();
         this.curFrameNo = states.size();
     }
 
@@ -29,5 +31,9 @@ public class PlayerStateDto {
 
     public List<StateDtos> getStates() {
         return states;
+    }
+
+    public List<ScoreDto> getScores() {
+        return scores;
     }
 }

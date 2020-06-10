@@ -27,6 +27,11 @@ public class LastFrame extends Frame {
 
     @Override
     public Score addBonusScore(Score score) {
-        return null;
+        return state.addScore(score);
+    }
+
+    @Override
+    public Score getScore() {
+        return state.calculateScore();
     }
 }

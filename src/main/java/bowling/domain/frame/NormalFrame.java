@@ -34,18 +34,35 @@ public class NormalFrame extends Frame {
 
     @Override
     public void appendFrame(final List<Frame> frames) {
-        if (isFrameEnd()) {
+        if (!isFrameEnd()) {
             return;
         }
 
         Frame newFrame = initNextFrame();
         frames.add(newFrame);
-        newFrame = nextFrame;
+        nextFrame = newFrame;
     }
 
     @Override
     public Score addBonusScore(Score score) {
-        return null;
+        score = state.addScore(score);
+
+        if (!score.isCalculable()) {
+            score = nextFrame.addBonusScore(score);
+        }
+
+        return score;
+    }
+
+    @Override
+    public Score getScore() {
+        Score score = state.calculateScore();
+
+        if (!score.isCalculable()) {
+            score = nextFrame.addBonusScore(score);
+        }
+
+        return score;
     }
 
 }

@@ -41,7 +41,7 @@ public abstract class State {
 
     public abstract List<Integer> getDownPins();
 
-    public Score getScore() {
+    public Score calculateScore() {
         return Score.INCALCULABLE;
     }
 

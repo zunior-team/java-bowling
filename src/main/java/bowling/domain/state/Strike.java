@@ -30,7 +30,7 @@ public class Strike extends EndState {
     }
 
     @Override
-    public Score getScore() {
+    public Score calculateScore() {
         return Score.ofStrike();
     }
 

@@ -1,9 +1,11 @@
 package bowling.view.console;
 
 import bowling.dto.PlayerStateDto;
+import bowling.dto.ScoreDto;
 import bowling.view.state.StatesStringConverter;
 
 import java.util.List;
+import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.IntStream;
 
 import static bowling.domain.frame.Frame.BASE_NUM_OF_FRAME;
@@ -11,6 +13,7 @@ import static bowling.domain.frame.Frame.LAST_NUM_OF_FRAME;
 
 public class ConsoleOutput {
     private static final String FRAME_FORMAT = "  %-4s|";
+    private static final String SCORE_FORMAT = "  %-4d|";
     private static final String NAME_FORMAT = "| %4s |";
     private static final String NUMBER_FORMAT = "  %02d  |";
     private static final String CUR_PAYER_STATE_FORMAT = "%d프레임 투구 :";
@@ -42,6 +45,27 @@ public class ConsoleOutput {
     }
 
     private static void ShowPlayer(final PlayerStateDto player) {
+        showFrameStateOfPlayer(player);
+        showScoreOfPlayer(player);
+    }
+
+    private static void showScoreOfPlayer(final PlayerStateDto player) {
+        System.out.print(String.format(NAME_FORMAT, EMPTY_STR));
+
+        AtomicInteger totalScore = new AtomicInteger(0);
+        player.getScores()
+                .stream()
+                .map(ScoreDto::getScore)
+                .map(totalScore::addAndGet)
+                .forEach(score -> System.out.print(String.format(SCORE_FORMAT, score)));
+
+        IntStream.range(player.getScores().size(), LAST_NUM_OF_FRAME)
+                .forEach(noStr -> System.out.print(String.format(FRAME_FORMAT, EMPTY_STR)));
+
+        newLine();
+    }
+
+    private static void showFrameStateOfPlayer(final PlayerStateDto player) {
         System.out.print(String.format(NAME_FORMAT, player.getName()));
 
         player.getStates()

@@ -46,7 +46,7 @@ class MissTest {
     void getScore() {
         Miss miss = Miss.init(Pin.of(5), Pin.of(2));
 
-        assertThat(miss.getScore()).isEqualTo(Score.of(7));
+        assertThat(miss.calculateScore()).isEqualTo(Score.of(7));
     }
 
     @Test

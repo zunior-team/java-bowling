@@ -72,7 +72,7 @@ class ReadyTest {
     void getScore() {
         Running running = Running.init(Pin.of(5));
 
-        assertThat(running.getScore()).isEqualTo(Score.INCALCULABLE);
+        assertThat(running.calculateScore()).isEqualTo(Score.INCALCULABLE);
     }
 
     @Test

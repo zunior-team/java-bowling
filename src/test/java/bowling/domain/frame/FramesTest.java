@@ -32,4 +32,10 @@ class FramesTest {
         assertThatExceptionOfType(UnReachableStateException.class)
                 .isThrownBy(() -> frames.downPins(Pin.of(10)));
     }
+
+    @Test
+    @DisplayName("계속 스트라이크를 던졌을때 점수 계산이 올바르게 되는지")
+    void getScoreTest() {
+
+    }
 }

@@ -1,6 +1,5 @@
 package bowling.domain.state;
 
-import bowling.domain.pin.Pin;
 import bowling.domain.score.Score;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -60,7 +59,7 @@ class StrikeTest {
     void getScore() {
         Strike strike = Strike.instance();
 
-        assertThat(strike.getScore().isCalculable()).isFalse();
+        assertThat(strike.calculateScore().isCalculable()).isFalse();
     }
 
     @Test

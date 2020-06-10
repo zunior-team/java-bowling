@@ -59,7 +59,7 @@ class RunningTest {
     void getScore() {
         Ready ready = Ready.instance();
 
-        assertThat(ready.getScore()).isEqualTo(Score.INCALCULABLE);
+        assertThat(ready.calculateScore()).isEqualTo(Score.INCALCULABLE);
     }
 
 

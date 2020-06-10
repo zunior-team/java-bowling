@@ -42,11 +42,9 @@ public abstract class Frame {
 
     public abstract Score addBonusScore(final Score score);
 
+    public abstract Score getScore();
+
     public StateDtos getFrameState() {
         return StateDtos.of(state.getState());
-    }
-
-    public int getScore() {
-        return -1;
     }
 }

@@ -95,7 +95,7 @@ class LastEndTest {
     void getScore(final Stack<State> states, final Score expected) {
         LastEnd lastEnd = LastEnd.init(states);
 
-        assertThat(lastEnd.getScore()).isEqualTo(expected);
+        assertThat(lastEnd.calculateScore()).isEqualTo(expected);
     }
 
     private static Stream<Arguments> getScore() {

@@ -54,11 +54,15 @@ public class Score {
     }
 
     public boolean isCalculable() {
-        return left == 0;
+        return this != INCALCULABLE && left == 0;
     }
 
     public int getScore() {
-        return score;
+        if (isCalculable()) {
+            return score;
+        }
+
+        return INCALCULABLE.getScore();
     }
 
     @Override
@@ -73,5 +77,13 @@ public class Score {
     @Override
     public int hashCode() {
         return Objects.hash(score, left);
+    }
+
+    @Override
+    public String toString() {
+        return "Score{" +
+                "score=" + score +
+                ", left=" + left +
+                '}';
     }
 }
