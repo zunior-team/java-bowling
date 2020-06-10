@@ -41,4 +41,18 @@ class ScoreTest {
 
         assertThatThrownBy(() -> score.add(5)).isInstanceOf(UnCalculatableException.class);
     }
+
+    @Test
+    @DisplayName("strike 로 생성된 score 는 두번까지 더할 수 있다.")
+    void ofStrike() {
+        assertThatCode(() -> Score.ofStrike().add(5)).doesNotThrowAnyException();
+        assertThatCode(() -> Score.ofStrike().add(5).add(5)).doesNotThrowAnyException();
+    }
+
+    @Test
+    @DisplayName("strike 로 생성된 score 는 세번이상 더하려고 하면 예외가 발생한다.")
+    void ofStrikeThrowException() {
+        assertThatThrownBy(() -> Score.ofStrike().add(10).add(10).add(5))
+                .isInstanceOf(UnCalculatableException.class);
+    }
 }
