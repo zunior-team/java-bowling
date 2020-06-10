@@ -2,6 +2,8 @@ package bowling.domain.state;
 
 import bowling.domain.pin.Pin;
 import bowling.domain.score.Score;
+import bowling.exception.ParallelNotSupportException;
+import bowling.exception.UnReachableStateException;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -73,11 +75,10 @@ public class LastRunning extends State {
 
     @Override
     protected Score add(Score prevScore) {
-        for (State state : states) {
-            prevScore = state.addScore(prevScore);
-        }
-
-        return prevScore;
+        return states.stream()
+                .reduce(prevScore,
+                        (byScore, state) -> state.addScore(byScore),
+                        (x, y) -> { throw new ParallelNotSupportException(); });
     }
 
     private State getLastState() {
