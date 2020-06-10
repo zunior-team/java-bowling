@@ -40,12 +40,10 @@ public class LastEnd extends EndState {
         List<State> states = new ArrayList<>(this.states);
         State finalState = states.remove(0);
 
-        Score score = finalState.calculateScore();
-        for (State state : states) {
-            score = state.addScore(score);
-        }
-
-        return score;
+        return states.stream()
+                .reduce(finalState.calculateScore(),
+                        (byScore, state) -> state.addScore(byScore),
+                        (x, y) -> { throw new ParallelNotSupportException(); });
     }
 
     @Override
