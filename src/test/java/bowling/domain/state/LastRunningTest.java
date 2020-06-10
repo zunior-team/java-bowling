@@ -1,6 +1,7 @@
 package bowling.domain.state;
 
 import bowling.domain.pin.Pin;
+import bowling.domain.score.Score;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -69,5 +70,13 @@ class LastRunningTest {
                 Arguments.of(TRY_ONCE, false),
                 Arguments.of(SPARE, false)
         );
+    }
+
+    @Test
+    @DisplayName("마지막 프레임 진행 상태는 점수를 구할 수 없다")
+    void getScore() {
+        LastRunning lastRunning = LastRunning.init();
+
+        assertThat(lastRunning.getScore()).isEqualTo(Score.INCALCULABLE);
     }
 }
