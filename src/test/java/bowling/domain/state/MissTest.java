@@ -1,6 +1,7 @@
 package bowling.domain.state;
 
 import bowling.domain.pin.Pin;
+import bowling.domain.score.Score;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -38,5 +39,12 @@ class MissTest {
         State missState = Miss.init(Pin.of(5), Pin.of(2));
 
         assertThat(missState.getDownPins()).containsExactly(5, 2);
+    }
+
+    @Test
+    @DisplayName("미스 상태에서는 점수를 계산할 수 있다.")
+    void getScore() {
+
+
     }
 }

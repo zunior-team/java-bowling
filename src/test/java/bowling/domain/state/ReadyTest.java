@@ -70,8 +70,8 @@ class ReadyTest {
     @Test
     @DisplayName("준비 상태는 점수 계산을 할 수 없다")
     void getScore() {
-        Ready ready = Ready.instance();
+        Running running = Running.init(Pin.of(5));
 
-        assertThat(ready.getScore()).isEqualTo(Score.INCALCULABLE);
+        assertThat(running.getScore()).isEqualTo(Score.INCALCULABLE);
     }
 }
