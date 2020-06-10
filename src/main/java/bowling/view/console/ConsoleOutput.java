@@ -16,13 +16,13 @@ public class ConsoleOutput {
     private static final String SCORE_FORMAT = "  %-4d|";
     private static final String NAME_FORMAT = "| %4s |";
     private static final String NUMBER_FORMAT = "  %02d  |";
-    private static final String CUR_PAYER_STATE_FORMAT = "%d프레임 투구 :";
+    private static final String CUR_PAYER_STATE_FORMAT = "%s의 %d프레임 투구 :";
     private static final String EMPTY_STR = "";
 
     private ConsoleOutput() {}
 
     public static void showCurPlayer(final PlayerStateDto player) {
-        System.out.print(String.format(CUR_PAYER_STATE_FORMAT, player.getCurFrameNo()));
+        System.out.print(String.format(CUR_PAYER_STATE_FORMAT, player.getName(), player.getCurFrameNo()));
     }
 
     public static void showScoreBoard(final List<PlayerStateDto> playersState) {

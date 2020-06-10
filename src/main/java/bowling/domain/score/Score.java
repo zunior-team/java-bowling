@@ -1,6 +1,7 @@
 package bowling.domain.score;
 
 import bowling.exception.IncalculableException;
+import bowling.exception.UnReachableStateException;
 
 import java.util.Objects;
 
@@ -58,11 +59,11 @@ public class Score {
     }
 
     public int getScore() {
-        if (isCalculable()) {
-            return score;
+        if (!isCalculable()) {
+            throw new UnReachableStateException();
         }
 
-        return INCALCULABLE.getScore();
+        return score;
     }
 
     @Override
