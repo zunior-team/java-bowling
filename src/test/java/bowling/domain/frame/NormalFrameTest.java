@@ -104,9 +104,29 @@ class NormalFrameTest {
         );
     }
 
-    @Test
+    @ParameterizedTest
+    @MethodSource
     @DisplayName("프레임의 점수는 end state일 때만 구할 수 있다")
-    void getScore() {
+    void getScore(final Frame frame) {
+        assertThat(frame.getScore()).isNotEqualTo(Score.INCALCULABLE);
+    }
 
+    private static Stream<Frame> getScore() {
+        NormalFrame endWithStrike = NormalFrame.init();
+        endWithStrike.downPins(Pin.of(10));
+
+        NormalFrame endWithSpare = NormalFrame.init();
+        endWithSpare.downPins(Pin.of(5));
+        endWithSpare.downPins(Pin.of(5));
+
+        NormalFrame endWithMiss = NormalFrame.init();
+        endWithMiss.downPins(Pin.of(5));
+        endWithMiss.downPins(Pin.of(2));
+
+        return Stream.of(
+                endWithStrike,
+                endWithSpare,
+                endWithMiss
+        );
     }
 }
