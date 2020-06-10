@@ -1,6 +1,7 @@
 package bowling.domain.state;
 
 import bowling.domain.pin.Pin;
+import bowling.domain.score.Score;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -60,5 +61,23 @@ class StrikeTest {
         Strike strike = Strike.instance();
 
         assertThat(strike.getScore().isCalculable()).isFalse();
+    }
+
+    @Test
+    @DisplayName("left 가 1인 경우 10을 더하고 리턴한다")
+    void addScore() {
+        Score score = Score.ofSpare();
+        Strike strike = Strike.instance();
+
+        assertThat(strike.addScore(score)).isEqualTo(Score.of(20, 0));
+    }
+
+    @Test
+    @DisplayName("left 가 2인 경우 첫번째, 10을 더하고 리턴한다")
+    void addScoreHavingLeft2() {
+        Score score = Score.ofStrike();
+        Strike strike = Strike.instance();
+
+        assertThat(strike.addScore(score)).isEqualTo(Score.of(20, 1));
     }
 }
