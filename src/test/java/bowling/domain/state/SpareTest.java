@@ -33,4 +33,12 @@ class SpareTest {
 
         assertThat(spareState.getDownPins()).containsExactly(5);
     }
+
+    @Test
+    @DisplayName("스페어 상태는 점수를 구하기 위해 추가적인 정보가 더 필요하다")
+    void getScore() {
+        Spare spare = Spare.init(Pin.of(5));
+
+        assertThat(spare.getScore().isCalculable()).isFalse();
+    }
 }
