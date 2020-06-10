@@ -2,6 +2,8 @@ package bowling.domain.score;
 
 import bowling.exception.UnCalculatableException;
 
+import java.util.Objects;
+
 public class Score {
     private static final Score NOT_CALCULATED_YET = new Score(-1, 0);
 
@@ -51,5 +53,19 @@ public class Score {
 
     public int getScore() {
         return score;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Score score1 = (Score) o;
+        return score == score1.score &&
+                left == score1.left;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(score, left);
     }
 }

@@ -55,4 +55,12 @@ class ScoreTest {
         assertThatThrownBy(() -> Score.ofStrike().add(10).add(10).add(5))
                 .isInstanceOf(UnCalculatableException.class);
     }
+
+    @Test
+    @DisplayName("동치성 테스트")
+    void equals() {
+        assertThat(Score.of(5)).isEqualTo(Score.of(5));
+        assertThat(Score.ofSpare()).isEqualTo(Score.ofSpare());
+        assertThat(Score.ofStrike()).isEqualTo(Score.ofStrike());
+    }
 }
