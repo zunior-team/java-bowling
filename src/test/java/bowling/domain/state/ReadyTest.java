@@ -1,6 +1,7 @@
 package bowling.domain.state;
 
 import bowling.domain.pin.Pin;
+import bowling.domain.score.Score;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -64,5 +65,31 @@ class ReadyTest {
         State readyState = Ready.instance();
 
         assertThat(readyState.getDownPins()).isEmpty();
+    }
+
+    @Test
+    @DisplayName("준비 상태는 점수 계산을 할 수 없다")
+    void getScore() {
+        Running running = Running.init(Pin.of(5));
+
+        assertThat(running.calculateScore()).isEqualTo(Score.INCALCULABLE);
+    }
+
+    @Test
+    @DisplayName("준비 상태에서는 점수를 더하더라도 아무 변화가 없다")
+    void addScore() {
+        Score score = Score.ofSpare(); //left != 0
+        Ready ready = Ready.instance();
+
+        assertThat(ready.addScore(score)).isEqualTo(score);
+    }
+
+    @Test
+    @DisplayName("모돈 상태에서 left 가 0 인경우 원래 score 를 리턴한다")
+    void addScoreWithLeftCountIsZero() {
+        Score score = Score.of(5);
+        Ready ready = Ready.instance();
+
+        assertThat(ready.addScore(score)).isEqualTo(score);
     }
 }

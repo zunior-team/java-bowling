@@ -1,6 +1,7 @@
 package bowling.domain.frame;
 
 import bowling.domain.pin.Pin;
+import bowling.domain.score.Score;
 import bowling.domain.state.Ready;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -49,7 +50,7 @@ class NormalFrameTest {
     @Test
     @DisplayName("볼링 끝 기본은 false")
     void isBowlingEnd() {
-        assertThat(NormalFrame.init().isBowlingEnd()).isFalse();
+        assertThat(NormalFrame.init().isLastFrameEnd()).isFalse();
     }
 
     @ParameterizedTest
@@ -81,5 +82,51 @@ class NormalFrameTest {
         Frame lastFrame = frames.get(0);
 
         assertThat(lastFrame).isInstanceOf(LastFrame.class);
+    }
+
+    @ParameterizedTest
+    @MethodSource
+    @DisplayName("프레임이 끝나지 않았다면 점수를 구할 수 없다.")
+    void getScoreNotEndYet(final Frame frame) {
+        assertThat(frame.getScore()).isEqualTo(Score.INCALCULABLE);
+    }
+
+    private static Stream<Frame> getScoreNotEndYet() {
+        // ready, running
+        NormalFrame readyStateFrame = NormalFrame.init();
+
+        NormalFrame runningStateFrame = NormalFrame.init();
+        runningStateFrame.downPins(Pin.of(5));
+
+        return Stream.of(
+                readyStateFrame,
+                runningStateFrame
+        );
+    }
+
+    @ParameterizedTest
+    @MethodSource
+    @DisplayName("프레임의 점수는 end state일 때만 구할 수 있다")
+    void getScore(final Frame frame) {
+        assertThat(frame.getScore()).isNotEqualTo(Score.INCALCULABLE);
+    }
+
+    private static Stream<Frame> getScore() {
+        NormalFrame endWithStrike = NormalFrame.init();
+        endWithStrike.downPins(Pin.of(10));
+
+        NormalFrame endWithSpare = NormalFrame.init();
+        endWithSpare.downPins(Pin.of(5));
+        endWithSpare.downPins(Pin.of(5));
+
+        NormalFrame endWithMiss = NormalFrame.init();
+        endWithMiss.downPins(Pin.of(5));
+        endWithMiss.downPins(Pin.of(2));
+
+        return Stream.of(
+                endWithStrike,
+                endWithSpare,
+                endWithMiss
+        );
     }
 }

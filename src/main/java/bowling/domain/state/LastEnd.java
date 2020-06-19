@@ -1,5 +1,8 @@
 package bowling.domain.state;
 
+import bowling.domain.score.Score;
+import bowling.exception.ParallelNotSupportException;
+
 import java.util.*;
 
 public class LastEnd extends EndState {
@@ -13,12 +16,8 @@ public class LastEnd extends EndState {
     }
 
     private void validate(final Stack<State> states) {
-        if (Objects.isNull(states)) {
-            throw new IllegalArgumentException("States can't be a null");
-        }
-
-        if (states.isEmpty()) {
-            throw new IllegalArgumentException("States can't be empty");
+        if (Objects.isNull(states) || states.isEmpty()) {
+            throw new IllegalArgumentException("States can't be a null or empty");
         }
     }
 
@@ -34,5 +33,24 @@ public class LastEnd extends EndState {
     @Override
     public List<Integer> getDownPins() {
         return Collections.emptyList();
+    }
+
+    @Override
+    public Score calculateScore() {
+        List<State> states = new ArrayList<>(this.states);
+        State finalState = states.remove(0);
+
+        return states.stream()
+                .reduce(finalState.calculateScore(),
+                        (viaScore, state) -> state.addScore(viaScore),
+                        (x, y) -> { throw new ParallelNotSupportException(); });
+    }
+
+    @Override
+    protected Score add(Score prevScore) {
+        return states.stream()
+                .reduce(prevScore,
+                        (viaScore, state) -> state.addScore(viaScore),
+                        (x, y) -> { throw new ParallelNotSupportException(); });
     }
 }

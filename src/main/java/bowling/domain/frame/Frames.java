@@ -1,6 +1,8 @@
 package bowling.domain.frame;
 
 import bowling.domain.pin.Pin;
+import bowling.domain.score.Score;
+import bowling.dto.ScoreDto;
 import bowling.dto.StateDtos;
 
 import java.util.ArrayList;
@@ -27,8 +29,8 @@ public class Frames {
         curFrame.appendFrame(frames);
     }
 
-    public boolean isBowlingEnd() {
-        return getCurFrame().isBowlingEnd();
+    public boolean isAllFrameEnd() {
+        return getCurFrame().isLastFrameEnd();
     }
 
     private Frame getCurFrame() {
@@ -41,4 +43,11 @@ public class Frames {
                 .collect(Collectors.toList());
     }
 
+    public List<ScoreDto> getScores() {
+        return frames.stream()
+                .map(Frame::getScore)
+                .filter(Score::isCalculable)
+                .map(ScoreDto::of)
+                .collect(Collectors.toList());
+    }
 }

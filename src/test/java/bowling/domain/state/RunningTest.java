@@ -1,6 +1,7 @@
 package bowling.domain.state;
 
 import bowling.domain.pin.Pin;
+import bowling.domain.score.Score;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -52,4 +53,32 @@ class RunningTest {
 
         assertThat(runningState.getDownPins()).containsExactly(5);
     }
+
+    @Test
+    @DisplayName("프레임 진행중에는 점수를 계산할 수 없다")
+    void getScore() {
+        Ready ready = Ready.instance();
+
+        assertThat(ready.calculateScore()).isEqualTo(Score.INCALCULABLE);
+    }
+
+
+    @Test
+    @DisplayName("score 를 더하면 본인이 가지고 있는 pin 만큼 더한 값을 리턴한다")
+    void addScore() {
+        Score score = Score.ofSpare();
+        Running running = Running.init(Pin.of(5));
+
+        assertThat(running.addScore(score)).isEqualTo(Score.of(15, 0));
+    }
+
+    @Test
+    @DisplayName("score 를 더하면 left 카운트가 하나 줄어든다.")
+    void addScoreOfStrike() {
+        Score score = Score.ofStrike();
+        Running running = Running.init(Pin.of(5));
+
+        assertThat(running.addScore(score)).isEqualTo(Score.of(15, 1));
+    }
+
 }

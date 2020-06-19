@@ -1,6 +1,7 @@
 package bowling.domain.state;
 
 import bowling.domain.pin.Pin;
+import bowling.domain.score.Score;
 
 import java.util.Collections;
 import java.util.List;
@@ -39,4 +40,18 @@ public abstract class State {
     }
 
     public abstract List<Integer> getDownPins();
+
+    public Score calculateScore() {
+        return Score.INCALCULABLE;
+    }
+
+    public Score addScore(final Score prevScore) {
+        if (prevScore.isCalculable()) {
+            return prevScore;
+        }
+
+        return add(prevScore);
+    }
+
+    protected abstract Score add(final Score prevScore);
 }

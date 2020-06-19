@@ -1,6 +1,7 @@
 package bowling.domain.state;
 
 import bowling.domain.pin.Pin;
+import bowling.domain.score.Score;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -38,5 +39,31 @@ class MissTest {
         State missState = Miss.init(Pin.of(5), Pin.of(2));
 
         assertThat(missState.getDownPins()).containsExactly(5, 2);
+    }
+
+    @Test
+    @DisplayName("미스 상태에서는 점수를 계산할 수 있다.")
+    void getScore() {
+        Miss miss = Miss.init(Pin.of(5), Pin.of(2));
+
+        assertThat(miss.calculateScore()).isEqualTo(Score.of(7));
+    }
+
+    @Test
+    @DisplayName("left 가 1인 경우 첫번째 쓰러뜨린 핀의 개수 만큼만 더하고 리턴한다")
+    void addScore() {
+        Score score = Score.ofSpare();
+        Miss miss = Miss.init(Pin.of(5), Pin.of(2));
+
+        assertThat(miss.addScore(score)).isEqualTo(Score.of(15, 0));
+    }
+
+    @Test
+    @DisplayName("left 가 2인 경우 첫번째, 두번째 쓰러뜨린 핀의 개수를 모두 더하고 리턴한다")
+    void addScoreHavingLeft2() {
+        Score score = Score.ofStrike();
+        Miss miss = Miss.init(Pin.of(5), Pin.of(2));
+
+        assertThat(miss.addScore(score)).isEqualTo(Score.of(17, 0));
     }
 }
