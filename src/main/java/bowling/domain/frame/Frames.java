@@ -22,10 +22,10 @@ public class Frames {
         return new Frames();
     }
 
-    public void downPins(final Pin downPins) {
+    public void bowl(final Pin downPins) {
         Frame curFrame = getCurFrame();
         
-        curFrame.downPins(downPins);
+        curFrame.bowl(downPins);
         curFrame.appendFrame(frames);
     }
 

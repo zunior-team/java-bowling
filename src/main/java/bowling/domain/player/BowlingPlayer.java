@@ -21,7 +21,7 @@ public class BowlingPlayer {
     }
 
     public void play(final int numOfDownPin) {
-        frames.downPins(Pin.of(numOfDownPin));
+        frames.bowl(Pin.of(numOfDownPin));
     }
 
     public boolean isGameEnd() {

@@ -1,18 +1,29 @@
 package bowling.domain.frame;
 
+import bowling.domain.pin.Pin;
 import bowling.domain.score.Score;
-import bowling.domain.state.Ready;
+import bowling.dto.StateDtos;
 
 import java.util.List;
 
 // 아무 일도 못하는 더미 프레임
 public class DummyFrame extends Frame {
     protected DummyFrame() {
-        super(Ready.instance(), -1);
+        super(-1);
     }
 
     public static Frame instance() {
         return LazyHolder.DUMMY;
+    }
+
+    @Override
+    public void downPins(Pin downPins) {
+        // do nothing
+    }
+
+    @Override
+    public boolean isFrameEnd() {
+        return false;
     }
 
     @Override
@@ -32,6 +43,11 @@ public class DummyFrame extends Frame {
 
     @Override
     public Score getScore() {
+        return null;
+    }
+
+    @Override
+    public StateDtos getFrameState() {
         return null;
     }
 
