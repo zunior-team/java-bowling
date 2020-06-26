@@ -2,49 +2,42 @@ package bowling.domain.frame;
 
 import bowling.domain.pin.Pin;
 import bowling.domain.score.Score;
-import bowling.domain.state.State;
 import bowling.dto.StateDtos;
+import bowling.exception.UnReachableStateException;
 
 import java.util.List;
-import java.util.Objects;
 
 public abstract class Frame {
     public static final int BASE_NUM_OF_FRAME = 1;
     public static final int LAST_NUM_OF_FRAME = 10;
 
-    protected State state;
     protected int frameNo;
 
-    protected Frame(final State state, final int frameNo) {
-        validate(state);
-
-        this.state = state;
+    protected Frame(final int frameNo) {
         this.frameNo = frameNo;
     }
 
-    private void validate(final State state) {
-        if (Objects.isNull(state)) {
-            throw new IllegalArgumentException("State can't be a null to init frame");
+    public void bowl(final Pin downPins) {
+        if (isFrameEnd()) {
+            throw new UnReachableStateException();
         }
+
+        downPins(downPins);
     }
 
-    public void downPins(final Pin downPins) {
-        this.state = state.downPins(downPins);
-    }
+    protected abstract void downPins(final Pin downPins);
 
-    public boolean isFrameEnd() {
-        return state.isEnd();
-    }
+    public abstract boolean isFrameEnd();
 
-    public abstract boolean isLastFrameEnd();
+    public boolean isLastFrameEnd() {
+        return false;
+    }
 
     public abstract void appendFrame(final List<Frame> frames);
 
-    public abstract Score addBonusScore(final Score score);
+    protected abstract Score addBonusScore(final Score score);
 
     public abstract Score getScore();
 
-    public StateDtos getFrameState() {
-        return StateDtos.of(state.getState());
-    }
+    public abstract StateDtos getFrameState();
 }

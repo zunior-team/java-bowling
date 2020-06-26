@@ -33,15 +33,15 @@ class FramesTest {
         Frames frames = Frames.init();
 
         for (int i = 0 ; i < 11 ; ++i) { // 한 게임에서 스트라이크는 최대 12번 던질 수 있다.
-            frames.downPins(Pin.of(10));
+            frames.bowl(Pin.of(10));
             assertThat(frames.isAllFrameEnd()).isFalse();
         }
 
-        frames.downPins(Pin.of(10));
+        frames.bowl(Pin.of(10));
         assertThat(frames.isAllFrameEnd()).isTrue();
 
         assertThatExceptionOfType(UnReachableStateException.class)
-                .isThrownBy(() -> frames.downPins(Pin.of(10)));
+                .isThrownBy(() -> frames.bowl(Pin.of(10)));
     }
 
     @ParameterizedTest
@@ -51,7 +51,7 @@ class FramesTest {
         Frames frames = Frames.init();
 
         for (int i = 0 ; i < loopCount ; ++i) {
-            frames.downPins(Pin.of(10));
+            frames.bowl(Pin.of(10));
         }
 
         AtomicInteger sum = new AtomicInteger(0);
@@ -100,7 +100,7 @@ class FramesTest {
     void getScoreWithSeveralType(final List<Integer> downPins, final List<Integer> expected) {
         Frames frames = Frames.init();
 
-        downPins.forEach(downPinCount -> frames.downPins(Pin.of(downPinCount)));
+        downPins.forEach(downPinCount -> frames.bowl(Pin.of(downPinCount)));
 
         AtomicInteger sum = new AtomicInteger(0);
         List<Integer> scores = frames.getScores()

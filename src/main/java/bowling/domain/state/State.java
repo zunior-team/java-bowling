@@ -27,11 +27,11 @@ public abstract class State {
         return false;
     }
 
-    protected boolean isMiss() {
+    public boolean isMiss() {
         return false;
     }
 
-    protected boolean isCleanState() {
+    public boolean isCleanState() {
         return false;
     }
 
